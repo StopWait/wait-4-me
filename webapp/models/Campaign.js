@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+const Schema   = mongoose.Schema;
+
+const campaignSchema = new Schema({
+  title: String,
+  description: String,
+  price: Number,
+  photoURL: String,
+  city: String,
+  refCreatorId: String,
+  refPatientId: String,
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
+});
+
+const Campaign = mongoose.model('Campaign', campaignSchema);
+module.exports = Campaign;
