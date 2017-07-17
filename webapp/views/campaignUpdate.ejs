@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <a href="/campaign"> Go back </a>
+  <h1><%= campaign.title %></h1>
+  <h2><%= campaign.price %></h2>
+  <img src="<%= campaign.photoURL %>" alt="<%= campaign.name %>"/>
+  <p><%= campaign.description %></p>
+
+
+  <form action="/campaign/<%= campaign._id %>/update" method="POST">
+    <label for="name">Title</label>
+    <input type="text" id="title" name="title" value="<%= campaign.title %>">
+
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price" value="<%= campaign.price %>" placeholder="<%= campaign.price %>">
+
+    <label for="image-url">Image URL</label>
+    <input type="text" name="photoURL" id="image-url" value="<%= campaign.photoURL %>">
+
+    <label for="description">Description</label>
+    <textarea type="text" name="description" id="description" value="<%= campaign.description %>"><%= campaign.description %></textarea>
+
+    <button type="submit">Update the campaign</button>
+  </form>
+  <br><br>
+  <a href="/campaign/<%= campaign._id %>/delete" style="color:red"> Delete that campaign</a>
+</body>
+
+</html>

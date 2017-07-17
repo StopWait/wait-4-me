@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <h1><%= title %></h1>
+  <p>Welcome to
+    <%= title %>
+  </p>
+  <ul>
+    <% campaigns.forEach((campaign) => { %>
+      <li>
+        <%= campaign.title %> - $<%= campaign.price %> -
+          <a href="/campaign/<%= campaign._id %>/detail" style="color:green"> View details</a>
+          <a href="/campaign/<%= campaign._id %>/delete" style="color:red"> Delete</a>
+      </li>
+      <%  }) %>
+  </ul>
+
+</body>
+
+</html>

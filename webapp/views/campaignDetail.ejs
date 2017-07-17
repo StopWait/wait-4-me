@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <a href="/campaign"> Go back </a>
+  <h1><%= campaign.title %></h1>
+  <h2><%= campaign.price %></h2>
+  <img src="<%= campaign.photoURL %>" alt="<%= campaign.name %>"/>
+  <p><%= campaign.description %></p>
+  <a href="/campaign/<%= campaign._id %>/update" style="color:green">EDIT CAMPAIGN</a>
+  <br><br>
+  <a href="/campaign/<%= campaign._id %>/delete" style="color:red">DELETE</a>
+
+</body>
+
+</html>
