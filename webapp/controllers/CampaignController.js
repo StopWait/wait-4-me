@@ -8,25 +8,19 @@ module.exports = {
     res.render('campaign-create');
   },
   createPost: (req, res, next) => {
-    console.log(req.body);
-
     let newCampaign = new Campaign({
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
       city: req.body.city,
     });
-    console.log("NEW CAMPAING =>");
-    console.log(newCampaign);
+
     newCampaign.save((err) => {
       if (err) {
-        console.log('Error al guardar campaña');
-        return res.render("layout");
+        return err;
       } else {
-        console.log('Campaña creada en la base de datos');
         return res.redirect("/");
       }
     });
   }
-
 };
