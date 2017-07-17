@@ -6,13 +6,14 @@ const path = require('path')
 const passport = require('passport')
 const mongoose = require('mongoose')
 const config = require('./config')
+const expressLayouts = require("express-ejs-layouts");
 
 module.exports = function(app){
 
   mongoose.connect(config.db)
 
   app.set('views', config.rootPath+'views')
-  app.set('view engine', 'jade')
+  app.set("view engine", "ejs");
   app.use(logger('dev'))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
