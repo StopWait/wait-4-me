@@ -7,7 +7,7 @@ const reviewSchema = new Schema({
   campaignId: String,
   title: String,
   description: String,
-  stars: Number,
+  stars: Number
 }, {
   timestamps: {
     createdAt: 'created_at',

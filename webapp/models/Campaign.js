@@ -4,11 +4,11 @@ const Schema   = mongoose.Schema;
 const campaignSchema = new Schema({
   title: String,
   description: String,
-  price: Number,
+  price: String,
   photoURL: String,
   city: String,
   refCreatorId: String,
-  refPatientId: String,
+  refPatientId: String
 }, {
   timestamps: {
     createdAt: 'created_at',

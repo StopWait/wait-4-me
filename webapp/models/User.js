@@ -6,7 +6,7 @@ const userSchema = new Schema({
   name: String,
   lastName: String,
   email: String,
-  city: String,
+  city: String
 }, {
   timestamps: {
     createdAt: 'created_at',
