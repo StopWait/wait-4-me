@@ -2,23 +2,28 @@ const Review = require('../models/review');
 
 module.exports = {
   createReviewGet: (req, res, next) => {
-    res.render('campaign-create');
+    console.log(req.param);
+    res.render('createReview');
   },
   // Pendiente crear vistas de review y guardarlas en la base de datos
   createReviewPost: (req, res, next) => {
+    console.log(req.params);
     let newReview = new Review({
       title: req.body.title,
       description: req.body.description,
-      price: req.body.price,
+      stars: req.body.stars,
       city: req.body.city,
-      isRespond: false
+      isRespond: false,
+      receiverId: req.params.id
     });
+    console.log(newReview);
     newReview.save((err) => {
       if (err) {
         return err;
       } else {
+        console.log('REVIEW CREADA CON EXITO');
         console.log(newReview);
-        return res.redirect("/campaign");
+        return res.redirect("/campaign/${req.params.id}/detail");
       }
     });
   },
