@@ -3,7 +3,7 @@ const Campaign = require('../models/Campaign');
 module.exports = {
   index: (req, res, next) => {
     Campaign.find({}, (err, campaign) => {
-      res.render('campaigns', {
+      res.render('campaigns/campaigns', {
         title: 'Express Juan',
         campaigns: campaign
       });
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   createCampaignGet: (req, res, next) => {
-    res.render('campaignCreate');
+    res.render('campaigns/campaignCreate');
   },
 
   createCampaignPost: (req, res, next) => {
@@ -36,7 +36,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.render('campaignDetail', {
+      res.render('campaigns/campaignDetail', {
         title: 'Express Juan',
         campaign: campaign
       });
@@ -60,7 +60,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.render('campaignUpdate', {
+      res.render('campaigns/campaignUpdate', {
         title: 'La campaña de Juanito',
         campaign: campaign
       });
