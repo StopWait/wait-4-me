@@ -1,0 +1,23 @@
+<div class="col-sm-8 col-sm-offset-2">
+  <div class="text-center">
+    <h1 class=" fa fa-user"> Profile</h1><br>
+    <span><strong>Username</strong>: <%= user.username %></span><br>
+    <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
+    <hr>
+    <div class="jumbotron">
+        <img src="https://avatars.io/gravatar/<%= user.local.email %>/140" class="img-circle"><br>
+        <strong>email</strong>:
+        <%= user.email %><br>
+        <% if (user.facebook.id != null) { %>
+          <h2 class="fa fa-facebook"> Facebook</h2><br>
+          <img src="https://avatars.io/gravatar/<%= user.facebook.email %>/140" class="img-circle"><br>
+          <strong>id</strong>:
+          <%= user.facebook.id %><br>
+            <strong>email</strong>:
+            <%= user.facebook.email %><br>
+              <strong>name</strong>:
+              <%= user.facebook.name %>
+      <% } %>
+    </div>
+  </div>
+</div>

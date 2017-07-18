@@ -1,9 +1,8 @@
 const app = require('express')();
 const passport = require('passport');
 
-
 require('dotenv').load();
-require('./config/passport')(passport);
+require('./config/passport')();
 require('./config/express')(app);
 require('./config/express')(app);
 
