@@ -11,7 +11,7 @@ module.exports = {
   },
 
   createCampaignGet: (req, res, next) => {
-    res.render('campaign-create');
+    res.render('campaignCreate');
   },
 
   createCampaignPost: (req, res, next) => {
@@ -20,12 +20,13 @@ module.exports = {
       description: req.body.description,
       price: req.body.price,
       city: req.body.city,
+      isCompleted: false
     });
     newCampaign.save((err) => {
       if (err) {
         return err;
       } else {
-        return res.redirect("/");
+        return res.redirect("/campaign");
       }
     });
   },
@@ -86,6 +87,5 @@ module.exports = {
       }
       res.redirect(`/campaign/${result._id}/detail`);
     });
-
   }
 };

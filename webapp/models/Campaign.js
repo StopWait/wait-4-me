@@ -8,7 +8,8 @@ const campaignSchema = new Schema({
   photoURL: String,
   city: String,
   refCreatorId: String,
-  refPatientId: String
+  refPatientId: String,
+  isCompleted: Boolean
 }, {
   timestamps: {
     createdAt: 'created_at',
