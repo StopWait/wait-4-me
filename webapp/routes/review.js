@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const ReviewController = require('../controllers/ReviewController');
 
-router.get(':id/create', ReviewController.createReviewGet);
-router.post('/create', ReviewController.createReviewPost);
+router.get('/:id/create', ReviewController.createReviewGet);
+router.post('/:id/create', ReviewController.createReviewPost);
 
 router.get('/:id/delete', ReviewController.reviewDelete);
 

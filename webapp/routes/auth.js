@@ -33,9 +33,10 @@ authRoutes.get('/logout', function(req, res) {
 });
 
 authRoutes.get('/profile', function(req, res) {
+  // console.log('desde PROFILE imprimo res.locals =>');
+  // console.log(res.locals);
   res.render('profile', {
-    email: req.body.email,
-    user: req.body.username
+    user: res.locals.user
   });
 });
 

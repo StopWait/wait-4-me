@@ -5,6 +5,7 @@ const User = require('../models/User');
 const dotenv = require ("dotenv").load();
 const LocalStrategy = require("passport-local").Strategy;
 const FbStrategy = require('passport-facebook').Strategy;
+const session = require('express-session');
 
 module.exports = function (){
   passport.serializeUser((user, cb) => {
@@ -22,7 +23,6 @@ module.exports = function (){
   passport.use('local-signup', new LocalStrategy(
     { passReqToCallback: true },
     (req, username, password, next) => {
-      console.log(req.body);
       process.nextTick(() => {
           User.findOne({
               'username': username

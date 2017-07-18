@@ -1,4 +1,4 @@
-<form id="form" action="/review/create" method="POST">
+<form id="form" action="/review/<%= idCampaign.id %>/create" method="POST">
   <label>Title</label><br>
   <input type="text" name="title" placeholder="Title">
   <br><br>
@@ -6,7 +6,7 @@
   <input type="text" name="description" placeholder="Description">
   <br><br>
   <label>Stars</label><br>
-  <input type="number" name="stars" placeholder="Price">
+  <input type="number" name="stars" placeholder="Stars">
   <br><br>
   <br>
       <button>Send review</button>

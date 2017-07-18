@@ -20,7 +20,8 @@ module.exports = {
       description: req.body.description,
       price: req.body.price,
       city: req.body.city,
-      isCompleted: false
+      isCompleted: false,
+      photoURL: 'http://lorempixel.com/200/200/'
     });
     newCampaign.save((err) => {
       if (err) {

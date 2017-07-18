@@ -7,6 +7,8 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config');
 const expressLayouts = require("express-ejs-layouts");
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 module.exports = function(app){
 
@@ -24,9 +26,22 @@ module.exports = function(app){
   app.use('/vendor/jquery', express.static(path.join(__dirname, '../node_modules/jquery/dist')));
   app.use('/vendor/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist')));
 
+  app.use(session({
+    secret: 'yeah2 ProJecttt v&J',
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore( { mongooseConnection: mongoose.connection })
+  }));
+
   app.use((req,res,next) =>{
-    console.log(req.user);
+    // console.log('req.user imprimido aquí =>');
+    // console.log(req.user);
     res.locals.user = req.user;
+    if (res.locals.user !== undefined) {
+      // console.log('req.locals.user imprimido aqui => ');
+      // console.log(res.locals.user.username);
+      // console.log(res.locals.user);
+    }
     next();
   });
 
