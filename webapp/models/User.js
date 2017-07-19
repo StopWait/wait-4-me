@@ -11,6 +11,7 @@ const userSchema = new Schema({
   city: String,
   pic_path: String,
   pic_name: String
+
 },
 {
   timestamps: {

@@ -1,3 +1,4 @@
+
 <form id="form" action="/campaign/create" method="POST">
   <label>Title</label><br>
   <input type="text" name="title" placeholder="Title">
@@ -11,6 +12,15 @@
   <label>City</label><br>
   <input type="text" name="city" placeholder="City">
   <br><br>
+  <input  id="lat" name="latitude" placeholder="Latitude" >
+  <input  id="lon" name="longitude" placeholder="Longitude">
   <br>
       <button>Create campaign</button>
 </form>
+<input id="pac-input" class="controls" type="text"
+    placeholder="Enter a location">
+<div id="map"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE3wzxrBK16zMljFyGq294DTotwbl85TY&libraries=places"></script>
+<script type="text/javascript" src="/javascript/map.js"></script>
