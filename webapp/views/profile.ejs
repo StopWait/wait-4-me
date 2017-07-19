@@ -18,7 +18,21 @@
               <strong>username</strong>:
               <%= user.username %>
       <% } %>
-      <a href="../user/<%= user._id %>/editUser">EDIT</a>
+    </div>
+    <a href="../../user/<%= user._id %>/editUser">EDIT USER</a>
+    <% reviews.forEach((review) => { %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="thumbnail">
+              <div class="caption">
+                <p><%= review.title %> </p>
+                <p>Author: <%= user.username %> </p>
+                <p>Description: <%= review.description %> </p>
+                <p>Valoration: <%= review.stars %> </p>
+              </div>
+            </div>
+            <% }) %>
+        </div>
     </div>
   </div>
 </div>

@@ -1,20 +1,3 @@
-<!--
-  <h1><%= title %></h1>
-  <p>Welcome to
-    <%= title %>
-  </p>
-  <ul>
-    <% campaigns.forEach((campaign) => { %>
-      <li>
-        <%= campaign.title %> - $<%= campaign.price %> -
-          <a href="/campaign/<%= campaign._id %>/detail" style="color:green"> View details</a>
-          <a href="/campaign/<%= campaign._id %>/delete" style="color:red"> Delete</a>
-      </li>
-      <%  }) %>
-  </ul>
-  <br><br>
-  <a href="/campaign/create">Crear Campaña</a>
-</body> -->
 <div class="container">
   <h2> All Projects </h2>
   <h3><a href="/campaign/create">Crear Campaña</a></h3>
@@ -24,11 +7,9 @@
           <div class="thumbnail">
             <img src="<%= campaign.photoURL %>" alt="<%= campaign.name %>">
               <div class="caption">
-                <p>Project Name: <%= campaign.name %> </p>
-                <p>Author: <%= campaign.author %> </p>
-                <p>Construction Date: <%= campaign.constructionDate %> </p>
+                <p>Project Name: <%= campaign.title %> </p>
                 <p>City: <%= campaign.city %> </p>
-                <p>Category: <%= campaign.typology %> </p>
+                <p>Description: <%= campaign.description %> </p>
                 <a href="/campaign/<%= campaign._id %>/detail">View details</a>
               </div>
             </div>
