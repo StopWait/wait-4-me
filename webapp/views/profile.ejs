@@ -5,7 +5,7 @@
     <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
     <hr>
     <div class="jumbotron">
-        <img src="https://avatars.io/gravatar/<%= user.email %>/140" class="img-circle"><br>
+        <img src="<%= user.pic_path%>" style="width:140px;"class="img-circle"><br>
         <strong>email</strong>:
         <%= user.email %><br>
         <% if (user._id != null) { %>
@@ -15,9 +15,10 @@
           <%= user.id %><br>
             <strong>email</strong>:
             <%= user.email %><br>
-              <strong>name</strong>:
-              <%= user.name %>
+              <strong>username</strong>:
+              <%= user.username %>
       <% } %>
+      <a href="../user/<%= user._id %>/editUser">EDIT</a>
     </div>
   </div>
 </div>

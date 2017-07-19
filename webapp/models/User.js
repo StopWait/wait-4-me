@@ -8,7 +8,9 @@ const userSchema = new Schema({
   lastName: String,
   password: String,
   email: String,
-  city: String
+  city: String,
+  pic_path: String,
+  pic_name: String
 },
 {
   timestamps: {
