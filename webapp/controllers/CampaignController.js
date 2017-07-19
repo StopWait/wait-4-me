@@ -20,9 +20,12 @@ module.exports = {
       description: req.body.description,
       price: req.body.price,
       city: req.body.city,
+      lat: req.body.latitude,
+      log: req.body.longitude,
       isCompleted: false,
       photoURL: 'http://lorempixel.com/200/200/'
     });
+    console.log(newCampaign);
     newCampaign.save((err) => {
       if (err) {
         return err;
