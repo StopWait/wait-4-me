@@ -9,7 +9,10 @@ const campaignSchema = new Schema({
   city: String,
   refCreatorId: String,
   refPatientId: String,
-  isCompleted: Boolean
+  isCompleted: Boolean,
+  lat: Number,
+  log: Number
+
 }, {
   timestamps: {
     createdAt: 'created_at',

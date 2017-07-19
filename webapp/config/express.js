@@ -34,13 +34,8 @@ module.exports = function(app){
   }));
 
   app.use((req,res,next) =>{
-    // console.log('req.user imprimido aquí =>');
-    // console.log(req.user);
     res.locals.user = req.user;
     if (res.locals.user !== undefined) {
-      // console.log('req.locals.user imprimido aqui => ');
-      // console.log(res.locals.user.username);
-      // console.log(res.locals.user);
     }
     next();
   });
