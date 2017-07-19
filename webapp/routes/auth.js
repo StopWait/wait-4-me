@@ -40,6 +40,28 @@ authRoutes.get('/profile', function(req, res) {
   });
 });
 
+authRoutes.get('/edituser', function(req, res) {
+  // console.log('desde PROFILE imprimo res.locals =>');
+  // console.log(res.locals);
+  res.render('editUser', {
+    user: res.locals.user
+  });
+});
+
+authRoutes.post('/edituser', function(req, res){
+  // let editUser {
+  //
+  // }
+  User.findById(req.params.id, (err, campaign) => {
+    if (err) {
+      console.log("Error");
+    }
+    res.render('profile', {
+
+    });
+  });
+});
+
 authRoutes.get("/auth/facebook", passport.authenticate("facebook"));
 authRoutes.get("/auth/facebook/callback", passport.authenticate("facebook", {
   successRedirect: "/auth/profile",

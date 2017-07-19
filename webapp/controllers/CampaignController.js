@@ -39,7 +39,7 @@ module.exports = {
       }
       res.render('campaigns/campaignDetail', {
         title: 'Express Juan',
-        campaign: campaign
+        campaign : campaign
       });
     });
   },
