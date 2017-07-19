@@ -1,6 +1,5 @@
-const Review = require('../models/review');
-// const mongoose = require('mongoose');
-// const Campaign = mongoose.model('Campaign', campaignSchema);
+const Review = require('../models/Review');
+const Campagin = require('../models/Campaign');
 
 module.exports = {
   createReviewGet: (req, res, next) => {
@@ -34,25 +33,18 @@ module.exports = {
     });
     console.log('Imprimo newReview antes de crearla => ');
     console.log(newReview);
-    newReview.save((err) => {
-      if (err) {
-        console.log('Devuelvo ERROR en el Save de Create Review => ');
-        return err;
-      } else {
-        console.log('REVIEW CREADA CON EXITO');
-        console.log(newReview);
-        res.redirect('/campaign');
+    newReview.save()
+      .then((result, err) => {
+        console.log('He llegado hasta aquí, hago el then RESULT =>');
+        console.log(result);
+        console.log('He llegado hasta aquí, hago el then ERR =>');
+        console.log(err);
+        // res.redirect('/campaign');
         // Este código que renderice campaing con la ID que tenía
-        // return Campaign.findById(req.params.id, (err, campaign) => {
-        //   if (err) {
-        //     console.log(err);
-        //   }
-        //   res.render('campaigns/campaignDetail', {
-        //     campaign: campaign
-        //   });
-        // });
-      }
-    });
+        console.log(req.params.id);
+        res.redirect(`../../campaign/${req.params.id}/detail`);
+      })
+      .catch(error => next(error));
   },
 
   reviewDelete: (req, res, next) => {
