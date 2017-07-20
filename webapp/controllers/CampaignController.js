@@ -30,6 +30,7 @@ module.exports = {
       refCreatorName: res.locals.user.username,
       photoURL: 'http://lorempixel.com/200/200/'
     });
+    console.log('Crear nueva campaña en la base de datos =>');
     console.log(newCampaign);
     newCampaign.save((err) => {
       if (err) {
@@ -46,7 +47,10 @@ module.exports = {
         console.log(err);
       }
       Review.find({campaignId: req.params.id}, (err, review) => {
+        console.log('Imprimir review dentro de Campaign Detail =>');
         console.log(review);
+        console.log('Imprimir campaña dentro de Campaign Detail =>');
+        console.log(campaign);
           res.render('campaigns/campaignDetail', {
             title: 'Express Juan',
             campaign: campaign,
@@ -60,6 +64,8 @@ module.exports = {
   campaignDelete: (req, res, next) => {
     let id = req.params.id;
     Campaign.findByIdAndRemove(id, (err, obj) => {
+      console.log('Imprimir campaña dentro antes de eliminarla =>');
+      console.log(obj);
       if (err) {
         return next(err);
       }
@@ -86,11 +92,14 @@ module.exports = {
       description: req.body.description,
       photoURL: req.body.photoURL
     };
+    console.log('Imprimir update antes de guardarla =>');
     console.log(updates);
     Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
       if (err) {
         console.log(err);
       }
+      console.log('Imprimir update después de guardarla =>');
+      console.log(result);
       res.redirect(`/campaign/${result._id}/detail`);
     });
   },
@@ -103,6 +112,8 @@ module.exports = {
         isRequest: true
       };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
+        console.log('Imprimir actualización de estado de campaña (alguien la hace) =>');
+        console.log(result);
         if (err) {
           console.log(err);
         }
@@ -117,6 +128,8 @@ module.exports = {
         if (err) {
           console.log(err);
         }
+        console.log('Imprimir actualización de estado de campaña (dejan de hacer la campaña) =>');
+        console.log(result);
       });
     }
     res.redirect(`/campaign/${req.params.id}/detail`);
@@ -129,6 +142,8 @@ module.exports = {
         if (err) {
           console.log(err);
         }
+        console.log('Marcar campaña como completa (el creador la marca) =>');
+        console.log(result);
       });
     } else if (!req.body.requestCampaign){
       const updates = { isCompleted: false };
@@ -136,6 +151,8 @@ module.exports = {
         if (err) {
           console.log(err);
         }
+        console.log('Marcar campaña como incompleta (el creador la desmarca) =>');
+        console.log(result);
       });
     }
     res.redirect(`/campaign/${req.params.id}/detail`);
