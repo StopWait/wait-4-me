@@ -2,7 +2,7 @@
   <div class="text-center">
     <h1 class=" fa fa-user"> Profile</h1><br>
     <span><strong>Username</strong>: <%= user.username %></span><br>
-    <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
+    <span class="fa fa-sign-out"><a href="../auth/logout"> Sign out</a></span>
     <hr>
     <div class="jumbotron">
         <img src="<%= user.pic_path%>" style="width:140px;"class="img-circle"><br>
@@ -26,7 +26,7 @@
           <div class="thumbnail">
               <div class="caption">
                 <p><%= review.title %> </p>
-                <p>Author: <%= user.username %> </p>
+                <p>Author: <%= review.senderName %> </p>
                 <p>Description: <%= review.description %> </p>
                 <p>Valoration: <%= review.stars %> </p>
               </div>

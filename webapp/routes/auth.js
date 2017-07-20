@@ -23,18 +23,20 @@ authRoutes.get('/login',ensureLogin.ensureLoggedOut('/'), (req, res) => {
 
 
 authRoutes.post('/login', passport.authenticate('local-login', {
-  successRedirect : `/user/profile`,
-  failureRedirect : '/'
+  successRedirect : `/campaign`,
+  failureRedirect : '/auth/login'
 }));
 
 authRoutes.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/');
+  res.render('index', {
+    user: res.locals.user
+  });
 });
 
 authRoutes.get("/auth/facebook", passport.authenticate("facebook"));
 authRoutes.get("/auth/facebook/callback", passport.authenticate("facebook", {
-  successRedirect: "/user/profile",
+  successRedirect: "/campaign",
   failureRedirect: "/"
 }));
 

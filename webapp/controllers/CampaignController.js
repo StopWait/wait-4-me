@@ -23,6 +23,7 @@ module.exports = {
       lat: req.body.latitude,
       log: req.body.longitude,
       isCompleted: false,
+      isRequest: false,
       refCreatorId: res.locals.user._id,
       refCreatorName: res.locals.user.username,
       photoURL: 'http://lorempixel.com/200/200/'
@@ -75,17 +76,11 @@ module.exports = {
   },
 
   campaignUpdatePost: (req, res, next) => {
-    let {
-      title,
-      price,
-      description,
-      photoURL
-    } = req.body;
     let updates = {
-      title,
-      price,
-      description,
-      photoURL
+      title: req.body.title,
+      price: req.body.price,
+      description: req.body.description,
+      photoURL: req.body.photoURL
     };
     console.log(updates);
     Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {

@@ -3,6 +3,7 @@ const Schema   = mongoose.Schema;
 
 const reviewSchema = new Schema({
   senderId: String,
+  senderName: String,
   receiverId: String,
   campaignId: String,
   title: String,

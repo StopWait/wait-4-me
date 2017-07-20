@@ -1,7 +1,10 @@
 <%= campaigns.title %>
 <div class="container">
   <h2> All Projects </h2>
-  <h3><a href="/campaign/create">Crear Campaña</a></h3>
+  <a href="/" class="btn btn-default"><span class="fa fa-user"></span>Go Home</a>
+  <br><br>
+  <a href="/campaign/create" class="btn btn-success"><span class="fa fa-sign-in"></span>Create Campaign</a>
+  <br><br>
       <div class="row">
         <% campaigns.forEach((campaign) => { %>
         <div class="col-md-6">
