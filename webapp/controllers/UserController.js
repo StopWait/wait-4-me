@@ -5,7 +5,7 @@ module.exports = {
 
   userProfileGet: (req, res, next) => {
 
-    // console.log('desde PROFILE imprimo res.locals =>');
+    console.log('desde PROFILE imprimo res.locals =>');
     Review.find({senderId: req.params.id}, (err, reviews) => {
       // console.log('IMPRIMO LAS REVIEWS DEL USER => ');
       // console.log(reviews);

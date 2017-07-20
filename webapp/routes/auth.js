@@ -23,7 +23,7 @@ authRoutes.get('/login',ensureLogin.ensureLoggedOut('/'), (req, res) => {
 
 
 authRoutes.post('/login', passport.authenticate('local-login', {
-  successRedirect : '/user/profile',
+  successRedirect : `/user/profile`,
   failureRedirect : '/'
 }));
 
