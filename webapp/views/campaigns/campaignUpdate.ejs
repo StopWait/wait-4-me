@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>
-    <%= title %>
-  </title>
-</head>
-
-<body>
+<div>
+  <%= campaign.title %>
   <a href="/campaign"> Go back </a>
   <h1><%= campaign.title %></h1>
   <h2><%= campaign.price %></h2>
@@ -32,6 +24,4 @@
   </form>
   <br><br>
   <a href="/campaign/<%= campaign._id %>/delete" style="color:red"> Delete that campaign</a>
-</body>
-
-</html>
+</div>

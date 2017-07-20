@@ -1,4 +1,4 @@
-<div id="map"></div>
+<%= campaigns.title %>
 <div class="container">
   <h2> All Projects </h2>
   <h3><a href="/campaign/create">Crear Campaña</a></h3>
@@ -11,8 +11,6 @@
                 <p>Project Name: <%= campaign.title %> </p>
                 <p>City: <%= campaign.city %> </p>
                 <p>Description: <%= campaign.description %> </p>
-                <li><%= campaign.lat %></li>
-                <li><%= campaign.log %></li>
                 <a href="/campaign/<%= campaign._id %>/detail">View details</a>
                 <% if(campaign.isRequest == true) { %>
                   <% if(user._id == campaign.isGoingToWaitId){ %>
@@ -45,5 +43,3 @@
         </div>
         <% }) %>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE3wzxrBK16zMljFyGq294DTotwbl85TY&libraries=places"></script>
-<script type="text/javascript" src="/javascript/map.js"></script>
