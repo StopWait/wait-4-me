@@ -12,7 +12,7 @@ authRoutes.get("/signup", (req, res, next) => {
 });
 
 authRoutes.post('/signup', passport.authenticate('local-signup', {
-  successRedirect : '/user/profile',
+  successRedirect : '/campaign',
   failureRedirect : '/auth/signup'
 }));
 

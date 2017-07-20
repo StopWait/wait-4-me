@@ -8,8 +8,12 @@ const campaignSchema = new Schema({
   photoURL: String,
   city: String,
   refCreatorId: String,
+  refCreatorName: String,
   refPatientId: String,
   isCompleted: Boolean,
+  isGoingToWaitName: String,
+  isGoingToWaitId: String,
+  isRequest: Boolean,
   lat: Number,
   log: Number
 

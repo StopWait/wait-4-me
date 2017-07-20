@@ -23,6 +23,8 @@ module.exports = {
       lat: req.body.latitude,
       log: req.body.longitude,
       isCompleted: false,
+      refCreatorId: res.locals.user._id,
+      refCreatorName: res.locals.user.username,
       photoURL: 'http://lorempixel.com/200/200/'
     });
     console.log(newCampaign);
@@ -42,7 +44,8 @@ module.exports = {
       }
       res.render('campaigns/campaignDetail', {
         title: 'Express Juan',
-        campaign : campaign
+        campaign: campaign,
+        user: res.locals.user
       });
     });
   },
@@ -91,5 +94,51 @@ module.exports = {
       }
       res.redirect(`/campaign/${result._id}/detail`);
     });
+  },
+
+  campaignRequestPost: (req, res, next) => {
+    if (req.body.requestCampaign == 'on') {
+      const updates = {
+        isGoingToWaitName: res.locals.user.username,
+        isGoingToWaitId: res.locals.user._id,
+        isRequest: true
+      };
+      Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    } else if (!req.body.requestCampaign){
+      const updates = {
+        isGoingToWaitName: '',
+        isGoingToWaitId: '',
+        isRequest: false
+      };
+      Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
+    res.redirect(`/campaign/${req.params.id}/detail`);
+  },
+
+  campaignMarkAsCompletePost: (req, res, next) => {
+    if (req.body.requestCampaign == 'on') {
+      const updates = { isCompleted: true };
+      Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    } else if (!req.body.requestCampaign){
+      const updates = { isCompleted: false };
+      Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
+    res.redirect(`/campaign/${req.params.id}/detail`);
   }
 };
