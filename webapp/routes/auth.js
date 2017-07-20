@@ -17,7 +17,7 @@ authRoutes.post('/signup', passport.authenticate('local-signup', {
 }));
 
 
-authRoutes.get('/login',ensureLogin.ensureLoggedOut('/'), (req, res) => {
+authRoutes.get('/login', (req, res) => {
     res.render('login', { message: "Mensaje Login" });
 });
 
