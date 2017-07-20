@@ -2,8 +2,8 @@
 <div class="container">
   <h2> All Projects </h2>
   <h3><a href="/campaign/create">Crear Campaña</a></h3>
-    <% campaigns.forEach((campaign) => { %>
       <div class="row">
+        <% campaigns.forEach((campaign) => { %>
         <div class="col-md-6">
           <div class="thumbnail">
             <img src="<%= campaign.photoURL %>" alt="<%= campaign.name %>">
@@ -12,10 +12,36 @@
                 <p>City: <%= campaign.city %> </p>
                 <p>Description: <%= campaign.description %> </p>
                 <a href="/campaign/<%= campaign._id %>/detail">View details</a>
+                <% if(campaign.isRequest == true) { %>
+                  <% if(user._id == campaign.isGoingToWaitId){ %>
+                    <% if(campaign.isCompleted === true){ %>
+                        <p>This campaign has finished. Rate owner and share your opinion</p>
+                    <% } else { %>
+                        <p>You are going to wait this queue</p>
+                    <% } %>
+                    <% } else { %>
+                    <p>This campaign have a user for wait: <%= campaign.isGoingToWaitName %> </p>
+                    <% } %>
+                <% } else { %>
+                  <p>This campaign don't have a user yet. ¿Do you want to wait this queue?</p>
+                <form action="/campaign/<%= campaign._id %>/request" method="post">
+                  <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
+                  <button type="submit">I want to wait</button>
+                  <br><br>
+                </form>
+              <% } %>
+
+                <% if (user._id == campaign.isGoingToWaitId && campaign.isRequest == true && campaign.isCompleted == false){ %>
+                  <form action="/campaign/<%= campaign._id %>/request" method="post">
+                    <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
+                    <button type="submit">I don't want to wait this queue</button>
+                    <br><br>
+                  </form>
+                  <% } %>
               </div>
             </div>
         </div>
-    <% }) %>
+        <% }) %>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE3wzxrBK16zMljFyGq294DTotwbl85TY&libraries=places"></script>
 <script type="text/javascript" src="/javascript/map.js"></script>
