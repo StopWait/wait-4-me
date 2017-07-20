@@ -17,21 +17,19 @@ authRoutes.post('/signup', passport.authenticate('local-signup', {
 }));
 
 
-authRoutes.get('/login',ensureLogin.ensureLoggedOut('/'), (req, res) => {
-    res.render('login', { message: "Mensaje Login" });
+authRoutes.get('/login', (req, res) => {
+    res.render('login');
 });
 
 
 authRoutes.post('/login', passport.authenticate('local-login', {
-  successRedirect : `/campaign`,
+  successRedirect : '/campaign',
   failureRedirect : '/auth/login'
 }));
 
 authRoutes.get('/logout', function(req, res) {
   req.logout();
-  res.render('index', {
-    user: res.locals.user
-  });
+  res.redirect('/../');
 });
 
 authRoutes.get("/auth/facebook", passport.authenticate("facebook"));

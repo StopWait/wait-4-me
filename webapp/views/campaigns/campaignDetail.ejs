@@ -4,6 +4,7 @@
   <a href="/campaign"> Go back </a>
   <h1><%= campaign.title %></h1>
   <h2><%= campaign.price %></h2>
+  <h2> <%= review.isRespond %> </h2>
   <img src="<%= campaign.photoURL %>" alt="<%= campaign.name %>" />
   <p>
     <%= campaign.description %>
@@ -36,8 +37,10 @@
                         <br><br>
                       </form>
                       <% } %>
-                        <% if(campaign.isCompleted === true && user._id == campaign.isGoingToWaitId) { %>
+                        <% if(campaign.isCompleted == true && user._id == campaign.isGoingToWaitId) { %>
+                          <% if(review.isRespond) { %>
                           <a href="/review/<%= campaign._id %>/create" style="color:blue">Send Review</a>
+                        <% } %>
                           <br><br>
                           <% } %>
                             <% if(user._id == campaign.refCreatorId) {%>

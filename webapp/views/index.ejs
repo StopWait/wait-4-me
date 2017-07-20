@@ -4,12 +4,12 @@
         <h1>Stop Wait</h1>
         <p class="lead">Simple APP to shop queue</p>
         <% if(!user) {%>
-          <a href="/auth/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>
-          <a href="/auth/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
-          <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+          <a href="auth/login" class="btn btn-default"><span class="fa fa-sign-in"></span> Login</a>
+          <a href="auth/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
+          <a href="auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
         <% }else{ %>
           <a href="campaign" class="btn btn-default"><span class="fa fa-sign-in"></span> Campaigns</a>
           <a href="user/profile" class="btn btn-default"><span class="fa fa-sign-in"></span> Profile</a>
-          <a href="auth/logout" class="btn btn-default"><span class="fa fa-sign-in"></span> Logout</a>
+          <a href="logout" class="btn btn-default"><span class="fa fa-sign-in"></span> Logout</a>
         <% } %>
     </div>

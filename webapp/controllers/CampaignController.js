@@ -1,11 +1,13 @@
 const Campaign = require('../models/Campaign');
+const Review = require('../models/Review');
 
 module.exports = {
   index: (req, res, next) => {
+    console.log(res.locals.user);
     Campaign.find({}, (err, campaign) => {
       res.render('campaigns/campaigns', {
-        title: 'Express Juan',
-        campaigns: campaign
+        campaigns: campaign,
+        user: res.locals.user
       });
     });
   },
@@ -43,10 +45,14 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.render('campaigns/campaignDetail', {
-        title: 'Express Juan',
-        campaign: campaign,
-        user: res.locals.user
+      Review.find({campaignId: req.params.id}, (err, review) => {
+        console.log(review);
+          res.render('campaigns/campaignDetail', {
+            title: 'Express Juan',
+            campaign: campaign,
+            user: res.locals.user,
+            review: review
+          });
       });
     });
   },
@@ -62,8 +68,6 @@ module.exports = {
   },
 
   campaignUpdateGet: (req, res, next) => {
-    console.log('Req.Params impreso =>');
-    console.log(req.params.id);
     Campaign.findById(req.params.id, (err, campaign) => {
       if (err) {
         console.log(err);

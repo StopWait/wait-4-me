@@ -1,18 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const logger = require('morgan');
 const path = require('path');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config');
 const expressLayouts = require("express-ejs-layouts");
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
 
 module.exports = function(app){
 
   mongoose.connect(config.db);
+
 
   app.set('views', config.rootPath+'views');
   app.set("view engine", "ejs");
@@ -33,10 +34,12 @@ module.exports = function(app){
     store: new MongoStore( { mongooseConnection: mongoose.connection })
   }));
 
-  app.use((req,res,next) =>{
+  app.use((req, res, next) => {
     res.locals.user = req.user;
-    if (res.locals.user !== undefined) {
-    }
+    // console.log('MIDDLEWARE REQ.USER => ');
+    // console.log(req.user);
+    // console.log('MIDDLEWARE RES.LOCALS => ');
+    // console.log(res.locals.user);
     next();
   });
 
