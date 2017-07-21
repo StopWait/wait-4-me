@@ -1,26 +1,32 @@
-
+<div class="container">
 <form id="form" action="/campaign/create" method="POST">
-  <label>Title</label><br>
-  <input type="text" name="title" placeholder="Title">
+  <input  id="lat" name="latitude" placeholder="Latitude" style="visibility:hidden">
+  <input  id="lon" name="longitude" placeholder="Longitude" style="visibility:hidden">
+  <label>Título</label><br>
+  <input type="text" name="title" placeholder="Título">
   <br><br>
-  <label>Description</label><br>
-  <input type="text" name="description" placeholder="Description">
+  <label>Descripción</label><br>
+  <input type="text" name="description" placeholder="Descripción">
   <br><br>
-  <label>Price</label><br>
-  <input type="text" name="price" placeholder="Price">
+  <label>¿Por cuanto?</label><br>
+  <input type="text" name="price" placeholder="€$€$€$€$">
   <br><br>
-  <label>City</label><br>
-  <input type="text" name="city" placeholder="City">
+  <label>Municipio</label><br>
+  <input type="text" name="city" placeholder="Municipio">
   <br><br>
-  <input  id="lat" name="latitude" placeholder="Latitude" >
-  <input  id="lon" name="longitude" placeholder="Longitude">
-  <br>
-      <button>Create campaign</button>
+  <div class="center-btn">
+    <a href="/campaign" class="btn btn-success"><span class="fa fa-sign-in"></span>CAMPAÑAS</a>
+    <button class="btn waves-effect waves-light" type="submit" name="action">CREAR
+   <i class="material-icons right">send</i></button>
+    <a href="/" class="btn btn-default"><span class="fa fa-user"></span>INICIO</a>
+  </div>
+  <br></br>
 </form>
 <input id="pac-input" class="controls" type="text"
     placeholder="Enter a location">
 <div id="map"></div>
-
+<br></br>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE3wzxrBK16zMljFyGq294DTotwbl85TY&libraries=places"></script>
 <script type="text/javascript" src="/javascript/mapAuto.js"></script>

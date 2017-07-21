@@ -1,27 +1,34 @@
-<div>
+
+<div class="container">
   <%= campaign.title %>
   <a href="/campaign"> Go back </a>
-  <h1><%= campaign.title %></h1>
-  <h2><%= campaign.price %></h2>
-  <img src="<%= campaign.photoURL %>" alt="<%= campaign.name %>"/>
-  <p><%= campaign.description %></p>
+
+  <h5 class="center-align"><%= campaign.description %></h5>
 
 
   <form action="/campaign/<%= campaign._id %>/update" method="POST">
-    <label for="name">Title</label>
+    <label for="name">Título</label>
     <input type="text" id="title" name="title" value="<%= campaign.title %>">
 
-    <label for="price">Price</label>
+    <label for="price">¿Por cuanto?</label>
     <input type="number" name="price" id="price" value="<%= campaign.price %>" placeholder="<%= campaign.price %>">
 
-    <label for="image-url">Image URL</label>
-    <input type="text" name="photoURL" id="image-url" value="<%= campaign.photoURL %>">
+    <label for="price">Ciudad</label>
+    <input type="text" name="city" id="city" value="<%= campaign.city %>" placeholder="<%= campaign.city %>">
 
-    <label for="description">Description</label>
+    <label for="description">Descripción</label>
     <textarea type="text" name="description" id="description" value="<%= campaign.description %>"><%= campaign.description %></textarea>
 
-    <button type="submit">Update the campaign</button>
+    <div class="center-btn">
+      <a href="/campaign" class="btn btn-success"><span class="fa fa-sign-in"></span>CAMPAÑAS</a>
+      <button class="btn waves-effect waves-light" type="submit" name="action">ACTUALIZAR
+        <i class="material-icons right">send</i></button>
+      <a href="/" class="btn btn-default"><span class="fa fa-user"></span>INICIO</a>
+      </div>
+<br></br>
   </form>
-  <br><br>
-  <a href="/campaign/<%= campaign._id %>/delete" style="color:red"> Delete that campaign</a>
+  <div class="center-btn">
+    <a href="/campaign/<%= campaign._id %>/delete" class="btn btn-default"><span class="fa fa-user"></span>ELIMINAR</a>
+  </div>
+<br></br>
 </div>
