@@ -31,11 +31,12 @@
               </p>
               <% } %>
                 <% } else { %>
+                  
                   <p>¿Nadie quiere hacerla? Seguro que encuentras una nueva amistad</p>
                   <form action="/campaign/<%= campaign._id %>/request" method="post">
                     <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
                     <button class="btn waves-effect waves-light" type="submit" name="action">ME APUNTO</button>
-                    <br><br>
+
                   </form>
                   <% } %>
 
@@ -43,13 +44,13 @@
                     <form action="/campaign/<%= campaign._id %>/request" method="post">
                     <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
                     <button class="btn waves-effect waves-light" type="submit" name="action">PASO DE HACER ESTA COLA</button>
-                    <br><br>
+
                     </form>
                     <% } %>
 
                   <% if(campaign.isCompleted === true && user._id == campaign.isGoingToWaitId) { %>
                     <a href="/review/<%= campaign._id %>/create" style="color:blue">Send Review</a>
-                    <br><br>
+
                     <% } %>
 
                   <% if(user._id == campaign.refCreatorId) {%>
@@ -57,19 +58,19 @@
                     <form action="/campaign/<%= campaign._id %>/complete" method="post">
                     <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
                     <button class="btn waves-effect waves-light" name="action">MARCAR COMO COMPLETADA</button>
-                    <br><br>
+
                     </form>
 
                     <a href="/campaign/<%= campaign._id %>/update" class="btn btn-success"><span class="fa fa-sign-in"></span>EDITAR CAMPAÑA</a>
 
-                    <br><br>
+
                     <button class="btn waves-effect waves-light" name="action"><a href="/campaign/<%= campaign._id %>/delete" style="color:white">BORRAR</a></button>
 
                   <% } else { %>
                     <form action="/campaign/<%= campaign._id %>/complete" method="post">
                     <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
                     <button class="btn waves-effect waves-light" type="submit" name="action">MARCAR COMO NO REALIZADA</button>
-                    <br><br>
+
                     </form>
                     <% } }%>
   </div>
