@@ -18,7 +18,7 @@ module.exports = {
   },
 
   createCampaignPost: (req, res, next) => {
-    let newCampaign = new Campaign({
+    const newCampaign = new Campaign({
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
@@ -63,7 +63,7 @@ module.exports = {
   },
 
   campaignDelete: (req, res, next) => {
-    let id = req.params.id;
+    const id = req.params.id;
     Campaign.findByIdAndRemove(id, (err, obj) => {
       console.log('Imprimir campaña dentro antes de eliminarla =>');
       console.log(obj);
@@ -87,7 +87,7 @@ module.exports = {
   },
 
   campaignUpdatePost: (req, res, next) => {
-    let updates = {
+    const updates = {
       title: req.body.title,
       price: req.body.price,
       description: req.body.description,
