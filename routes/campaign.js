@@ -3,19 +3,19 @@ const CampaignController = require('../controllers/CampaignController');
 
 router.get('/', CampaignController.index);
 
-router.get('/create', CampaignController.createCampaignGet);
-router.post('/create', CampaignController.createCampaignPost);
+router.get('/create', CampaignController.createGet);
+router.post('/create', CampaignController.createPost);
 
-router.get('/:id/detail', CampaignController.campaignDetail);
+router.get('/:id/detail', CampaignController.detail);
 
-router.get('/:id/delete', CampaignController.campaignDelete);
+router.get('/:id/delete', CampaignController.delete);
 
-router.get('/:id/update', CampaignController.campaignUpdateGet);
-router.post('/:id/update', CampaignController.campaignUpdatePost);
+router.get('/:id/update', CampaignController.editGet);
+router.post('/:id/update', CampaignController.editPost);
 
-router.post('/:id/request', CampaignController.campaignRequestPost);
+router.post('/:id/request', CampaignController.requestPost);
 
-router.post('/:id/complete', CampaignController.campaignMarkAsCompletePost);
+router.post('/:id/complete', CampaignController.markAsCompletePost);
 
 
 module.exports = router;

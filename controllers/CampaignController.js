@@ -13,11 +13,11 @@ module.exports = {
     });
   },
 
-  createCampaignGet: (req, res, next) => {
+  createGet: (req, res, next) => {
     res.render('campaigns/campaignCreate');
   },
 
-  createCampaignPost: (req, res, next) => {
+  createPost: (req, res, next) => {
     const newCampaign = new Campaign({
       title: req.body.title,
       description: req.body.description,
@@ -42,7 +42,7 @@ module.exports = {
     });
   },
 
-  campaignDetail: (req, res, next) => {
+  detail: (req, res, next) => {
     Campaign.findById(req.params.id, (err, campaign) => {
       if (err) {
         console.log(err);
@@ -62,7 +62,7 @@ module.exports = {
     });
   },
 
-  campaignDelete: (req, res, next) => {
+  delete: (req, res, next) => {
     const id = req.params.id;
     Campaign.findByIdAndRemove(id, (err, obj) => {
       console.log('Imprimir campaña dentro antes de eliminarla =>');
@@ -74,7 +74,7 @@ module.exports = {
     });
   },
 
-  campaignUpdateGet: (req, res, next) => {
+  editGet: (req, res, next) => {
     Campaign.findById(req.params.id, (err, campaign) => {
       if (err) {
         console.log(err);
@@ -86,7 +86,7 @@ module.exports = {
     });
   },
 
-  campaignUpdatePost: (req, res, next) => {
+  editPost: (req, res, next) => {
     const updates = {
       title: req.body.title,
       price: req.body.price,
@@ -105,7 +105,7 @@ module.exports = {
     });
   },
 
-  campaignRequestPost: (req, res, next) => {
+  requestPost: (req, res, next) => {
     if (req.body.requestCampaign == 'on') {
       const updates = {
         isGoingToWaitName: res.locals.user.username,
@@ -136,7 +136,7 @@ module.exports = {
     res.redirect(`/campaign/${req.params.id}/detail`);
   },
 
-  campaignMarkAsCompletePost: (req, res, next) => {
+  markAsCompletePost: (req, res, next) => {
     if (req.body.requestCampaign == 'on') {
       const updates = { isCompleted: true };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {

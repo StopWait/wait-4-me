@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const ReviewController = require('../controllers/ReviewController');
 
-router.get('/:id/create', ReviewController.createReviewGet);
-router.post('/:id/create', ReviewController.createReviewPost);
+router.get('/:id/create', ReviewController.createGet);
+router.post('/:id/create', ReviewController.createPost);
 
-router.get('/:id/delete', ReviewController.reviewDelete);
+router.get('/:id/delete', ReviewController.delete);
 
-router.get('/:id/update', ReviewController.reviewUpdateGet);
-router.post('/:id/update', ReviewController.reviewUpdatePost);
+router.get('/:id/update', ReviewController.editeGet);
+router.post('/:id/update', ReviewController.editPost);
 
 
 module.exports = router;

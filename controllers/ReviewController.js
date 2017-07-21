@@ -2,13 +2,13 @@ const Review = require('../models/Review');
 const Campaign = require('../models/Campaign');
 
 module.exports = {
-  createReviewGet: (req, res, next) => {
+  createGet: (req, res, next) => {
     res.render('createReview', {
       user: res.locals.user,
       idCampaign: req.params
     });
   },
-  createReviewPost: (req, res, next) => {
+  createPost: (req, res, next) => {
     Campaign.find({_id: req.params.id}, (err, campaign) => {
       if (err) {
         console.log(err);
@@ -32,7 +32,7 @@ module.exports = {
     });
   },
 
-  reviewDelete: (req, res, next) => {
+  delete: (req, res, next) => {
     let id = req.params.id;
     Review.findByIdAndRemove(id, (err, obj) => {
       if (err) {
@@ -42,7 +42,7 @@ module.exports = {
     });
   },
 
-  reviewUpdateGet: (req, res, next) => {
+  editGet: (req, res, next) => {
     Review.findById(req.params.id, (err, campaign) => {
       if (err) {
         console.log(err);
@@ -54,7 +54,7 @@ module.exports = {
     });
   },
 
-  reviewUpdatePost: (req, res, next) => {
+  editPost: (req, res, next) => {
     let {
       title,
       price,
