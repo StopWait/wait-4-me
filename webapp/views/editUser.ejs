@@ -1,7 +1,5 @@
-<div class="col-sm-8 col-sm-offset-2">
-  <div class="jumbotron text-center">
-    <h1><span class="fa fa-sign-in"></span> Edit USER</h1>
-
+<div class="container">
+<h1 class=" fa fa-user center-align">EDITAR USUARIO</h1><br>
 
 
     <form action="/user/<%= user._id %>/editUser" method="post" enctype="multipart/form-data">
@@ -14,17 +12,26 @@
           <input type="text" class="form-control" name="email" value="<%= user.email %>">
       </div>
       <div class="col-sm-4">
-    <div class="kv-avatar center-block text-center" style="width:200px">
-        <input id="avatar-1" name="avatar-1" type="file" class="file-loading" required>
-        <div class="help-block"><small>Select file</small></div>
-    </div>
-</div>
+
+    <div class="file-field input-field">
+          <div class="btn">
+            <span>Selecciona Archivo</span>
+            <input id="avatar-1" name="avatar-1" type="file" class="file-loading" required>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        </div>
       <div>
-        <input type="submit" class="form-control" value="Submit" />
+        <div class="center-btn">
+        <button class="btn waves-effect waves-light" type="submit" name="action" value="Submit">ACTUALIZAR
+          <i class="material-icons right">send</i>
+        </button>
+        <br></br>
+      </div>
       </div>
     </form>
   </div>
-  <hr>
-  <span class="fa fa-sign-in"> Already have an account?<a href="/auth/login"> Login</a></span>
-  <p>Or go <a href="/">home</a>.</p>
+</div>
 </div>

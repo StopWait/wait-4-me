@@ -1,38 +1,45 @@
-<div class="col-sm-8 col-sm-offset-2">
-  <div class="text-center">
-    <h1 class=" fa fa-user"> Profile</h1><br>
-    <span><strong>Username</strong>: <%= user.username %></span><br>
-    <span class="fa fa-sign-out"><a href="../auth/logout"> Sign out</a></span>
-    <hr>
-    <div class="jumbotron">
-        <img src="<%= user.pic_path%>" style="width:140px;"class="img-circle"><br>
-        <strong>email</strong>:
-        <%= user.email %><br>
-        <% if (user._id != null) { %>
-          <h2 class="fa fa-facebook"> Facebook</h2><br>
-          <img src="https://avatars.io/gravatar/<%= user.email %>/140" class="img-circle"><br>
-          <strong>id</strong>:
-          <%= user.id %><br>
-            <strong>email</strong>:
-            <%= user.email %><br>
-              <strong>username</strong>:
-              <%= user.username %>
-      <% } %>
+<div class="container">
+<h1 class=" fa fa-user center-align"> Profile</h1><br>
+<ul class="collection">
+  <li class="collection-item avatar">
+    <img src="<%= user.pic_path%>" alt="" class="circle">
+    <span class="title">ID de Usuario</span>
+    <p>Su id de usuario es: <br>
+       <%= user.id %>
+    </p>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle">folder</i>
+    <span class="title">Email de Usuario</span>
+    <p>Su email es: <br>
+       <%= user.email %>
+    </p>
+  </li>
+  <li class="collection-item avatar">
+    <i class="material-icons circle green">insert_chart</i>
+    <span class="title">Nombre de Usuario</span>
+    <p>Su nombre de usuario es:<br>
+       <%= user.username %>
+    </p>
+  </li>
+</div>
+</ul>
     </div>
-    <a href="../../user/<%= user._id %>/editUser">EDIT USER</a>
     <% reviews.forEach((review) => { %>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="thumbnail">
-              <div class="caption">
-                <p><%= review.title %> </p>
-                <p>Author: <%= review.senderName %> </p>
-                <p>Description: <%= review.description %> </p>
-                <p>Valoration: <%= review.stars %> </p>
-              </div>
-            </div>
+      <div  class="container">
+      <div class="card small">
+       <h3>Breve valoracion: <%= review.title %></h3>
+        <p><%= review.description %></p>
+        <p>Autor: <%= review.senderName %> </p>
+        <p>Valoración: <%= review.stars %> </p>
+      </div>
+
             <% }) %>
         </div>
     </div>
+    <div class="container">
+      <div class="center-btn">
+        <a href="../../user/<%= user._id %>/editUser" class="btn btn-success"><span class="fa fa-sign-in"></span>EDITAR MI USUARIO</a><br></br>
   </div>
-</div>
+  </div>
+  </div>
