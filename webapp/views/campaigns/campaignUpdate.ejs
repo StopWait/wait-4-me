@@ -1,7 +1,5 @@
 
 <div class="container">
-  <%= campaign.title %>
-  <a href="/campaign"> Go back </a>
 
   <h5 class="center-align"><%= campaign.description %></h5>
 
@@ -20,14 +18,16 @@
     <textarea type="text" name="description" id="description" value="<%= campaign.description %>"><%= campaign.description %></textarea>
 
     <div class="center-btn">
-      <a href="/campaign" class="btn btn-success"><span class="fa fa-sign-in"></span>CAMPAÑAS</a>
       <button class="btn waves-effect waves-light" type="submit" name="action">ACTUALIZAR
         <i class="material-icons right">send</i></button>
-      <a href="/" class="btn btn-default"><span class="fa fa-user"></span>INICIO</a>
+        <br></br>
       </div>
+
 <br></br>
   </form>
   <div class="center-btn">
+    <a href="/campaign" class="btn btn-success"><span class="fa fa-sign-in"></span>CAMPAÑAS</a>
+    <br></br>
     <a href="/campaign/<%= campaign._id %>/delete" class="btn btn-default"><span class="fa fa-user"></span>ELIMINAR</a>
   </div>
 <br></br>
