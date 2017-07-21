@@ -3,6 +3,7 @@ const Review = require('../models/Review');
 
 module.exports = {
   index: (req, res, next) => {
+    console.log('Renderizo campañas /campaign a pelo imprimo res.locals.users =>');
     console.log(res.locals.user);
     Campaign.find({}, (err, campaign) => {
       res.render('campaigns/campaigns', {
