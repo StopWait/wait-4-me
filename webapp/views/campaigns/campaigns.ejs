@@ -1,11 +1,9 @@
 <%= campaigns.title %>
 <div class="container">
-<h2 class="center-align"> TODOS LOS EVENTOS </h2>
+<h2 class="center-align teal-text"> TODOS LOS EVENTOS </h2>
 
 <div class="center-btn">
-  <a href="/campaign/create" class="btn btn-success"><span class="fa fa-sign-in"></span>NUEVA FILA</a>
-  <a href="/" class="btn btn-default"><span class="fa fa-user"></span>INICIO</a>
-  <a href="/user/profile" class="btn btn-default"><span class="fa fa-user"></span>PERFIL</a>
+  <a href="/campaign/create" class="btn btn-success"><span class="fa fa-sign-in"></span>INICIAR NUEVA CAMPAÑA</a>
   <br><br>
 </div>
 
@@ -19,10 +17,16 @@
       </div>
       <div class="card-content">
         <div class="multipleMap" id="map<%= i%>"></div>
-        <p>Título & Lugar: <%= campaign.title %> </p>
-        <p>Municipio: <%= campaign.city %> </p>
-        <p>Descripción: <%= campaign.description %> </p>
-        <p>¿Por cuanto?: <%= campaign.price %> </p>
+        <br>
+        <!-- <div class="center-left"> -->
+          <h6 class="teal-text center-align"><u><b>CAMPAÑA</b></u></h6>
+          <p><b><%= campaign.title %></b></p>
+          <h6 class="teal-text"><b>Descripción:</b></h6>
+            <p><%= campaign.description %></p>
+          <h6 class="teal-text"><b>Ciudad:</b></h6>
+          <p><%= campaign.city %></p>
+          <h6 class="teal-text"><b>¿Por cuanto?</b> <%= campaign.price %>€</h6>
+      <!-- </div> -->
       </div>
     </div>
   </div>

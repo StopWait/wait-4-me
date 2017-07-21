@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      Queue4ME
+      WAIT 4 ME
     </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/css/materialize.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -13,6 +13,7 @@
   </head>
   <body>
   <% if(user) { %>
+    <div class="navbar-fixed">
       <nav class="white" role="navigation">
         <div class="nav-wrapper container">
           <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
@@ -35,23 +36,27 @@
           <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
       </nav>
+    </div>
   <% } else { %>
-    <nav class="white" role="navigation">
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/auth/login">Log in</a></li>
-        </ul>
-        <ul id="nav-mobile" class="side-nav">
-          <li><a href="/auth/login">Log in</a></li>
-          <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-      </div>
-    </nav><% } %>
+    <div class="navbar-fixed">
+      <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
+          </ul>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/auth/login">Log in</a></li>
+          </ul>
+          <ul id="nav-mobile" class="side-nav">
+            <li><a href="/auth/login">Log in</a></li>
+            <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
+          </ul>
+          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+      </nav>
+    </div>
+<% } %>
     <%- body -%>
   </body>
   <footer class="page-footer teal">
