@@ -28,20 +28,21 @@
   <% if(campaign.isRequest == true) { %>
     <% if(user._id == campaign.isGoingToWaitId){ %>
       <% if(campaign.isCompleted === true){ %>
-    <p>La cola se ha terminado por fin. Deja tu valoración</p>
+    <h5><span class="teal-text">La cola ha finalizado</span>. Puedes dejar una valoración al creador</h5>
     <% } else { %>
-      <p>Ánimo no desesperes</p>
+      <h5><span class="teal-text">Vas a esperar esta cola.</span> Ánimo cárgate de paciencia y una silla</h5>
+      <br>
       <% } %>
     <% } else { %>
-      <h3>Usuario que espera la cola:</h3>
+      <h3>Usuario que va a esperar la cola:</h3>
         <h5 class="teal-text"><%= campaign.isGoingToWaitName %></h5>
       <% } %>
       <% } else { %>
 
-    <h5><span class="teal-text">¿Nadie quiere hacerla?</span> Seguro que encuentras una nueva amistad</h5>
+    <h5><span class="teal-text">¿Nadie quiere hacerla?</span> Hazla tú, seguro que encuentras una nueva amistad</h5>
     <form action="/campaign/<%= campaign._id %>/request" method="post">
       <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
-      <button class="btn waves-effect waves-light" type="submit" name="action">ME APUNTO</button>
+      <button class="btn waves-effect waves-light" type="submit" name="action">YO QUIERO HACER ESTA COLA</button>
 
     </form>
     <% } %>
@@ -49,13 +50,13 @@
     <% if (user._id == campaign.isGoingToWaitId && campaign.isRequest == true && campaign.isCompleted == false){ %>
       <form action="/campaign/<%= campaign._id %>/request" method="post">
       <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
-      <button class="btn waves-effect waves-light" type="submit" name="action">PASO DE HACER ESTA COLA</button>
+      <button class="btn waves-effect waves-light" type="submit" name="action">MEJOR NO, PASO DE ESPERAR</button>
     </form>
     <% } %>
 
     <% if(campaign.isCompleted === true && user._id == campaign.isGoingToWaitId) { %>
       <div class="center-btn">
-        <a href="/review/<%= campaign._id %>/create" class="btn btn-success"><span class="fa fa-sign-in"></span>ENVIA TU RESEÑA</a>
+        <a href="/review/<%= campaign._id %>/create" class="btn btn-success"><span class="fa fa-sign-in"></span>ENVIA UNA RESEÑA AL CREADOR</a>
         <br><br>
       </div>
       <% } %>
@@ -71,15 +72,17 @@
       <br>
       <form action="/campaign/<%= campaign._id %>/complete" method="post">
         <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
-        <button class="btn waves-effect waves-light" name="action">MARCAR COMO TERMINADA</button>
+        <button class="btn waves-effect waves-light" name="action">MARCAR COMO FINALIZADA</button>
       </form>
-      <br>
+      <br><br>
       <a href="/campaign/<%= campaign._id %>/update" class="btn btn-success"><span class="fa fa-sign-in"></span>EDITAR CAMPAÑA</a>
+      <br><br>
       <button class="btn waves-effect waves-light" name="action"><a href="/campaign/<%= campaign._id %>/delete" style="color:white">ELIMINAR PERMANENTEMENTE</a></button>
+      <br>
   <% } else { %>
     <form action="/campaign/<%= campaign._id %>/complete" method="post">
       <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
-      <button class="btn waves-effect waves-light" type="submit" name="action">MARCAR COMO NO TERMINADA</button>
+      <button class="btn waves-effect waves-light" type="submit" name="action">MARCAR COMO NO FINALIZADA</button>
     </form>
   <% } }%>
     </div>

@@ -13,7 +13,7 @@
   </head>
   <body>
   <% if(user) { %>
-    <div class="navbar-fixed">
+    <!-- <div class="navbar-fixed"> -->
       <nav class="white" role="navigation">
         <div class="nav-wrapper container">
           <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
@@ -24,19 +24,22 @@
             <li><a href="../../user/profile">Mi perfil</a></li>
           </ul>
           <ul class="right hide-on-med-and-down">
+            <li><a href="../../">Inicio</a></li>
+          </ul>
+          <ul class="right hide-on-med-and-down">
             <li><a href="../../campaign">Ver Campañas</a></li>
           </ul>
 
+          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="side-nav">
-            <li><a href="../../campaign">Campañas</a></li>
-            <li><a href="../../">Inicio</a></li>
-            <li><a href="../../user/profile">Perfil</a></li>
+            <li><a href="../../campaign">Campañas<i class="material-icons">event_available</i></a></li>
+            <li><a href="../../">Inicio<i class="material-icons">home</i></a></li>
+            <li><a href="../../user/profile">Perfil<i class="material-icons">person</i></a></li>
             <li><a class="waves-effect waves-light btn" href="/auth/logout">Salir</a></li>
           </ul>
-          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
       </nav>
-    </div>
+    <!-- </div> -->
   <% } else { %>
     <div class="navbar-fixed">
       <nav class="white" role="navigation">

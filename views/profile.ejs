@@ -1,5 +1,5 @@
 <div class="container">
-<h1 class=" fa fa-user center-align"> Profile</h1><br>
+<h3 class=" fa fa-user center-align teal-text"> YOUR PROFILE</h3><br>
 <ul class="collection">
   <li class="collection-item avatar">
     <img src="<%= user.pic_path%>" alt="" class="circle">
@@ -24,18 +24,21 @@
   </li>
 </div>
 </ul>
-    </div>
+<br>
+<h5 class="teal-text center-align">Reviews para user.username</h5>
+<div class="container">
+    <ul class="collection">
     <% reviews.forEach((review) => { %>
-      <div  class="container">
-      <div class="card small">
-       <h3>Breve valoracion: <%= review.title %></h3>
-        <p><%= review.description %></p>
+      <li class="collection-item avatar">
+        <h4><%= review.title %></h4>
+        <i class="material-icons circle yellow">check_box</i>
         <p>Autor: <%= review.senderName %> </p>
-        <p>Valoración: <%= review.stars %> </p>
+        <p>Comentario: <%= review.description %></p>
+        <p>Puntuación: <%= review.stars %> estrellas</p>
+      </li>
+      <% }) %>
+        </ul>
       </div>
-
-            <% }) %>
-        </div>
     </div>
     <div class="container">
       <div class="center-btn">
