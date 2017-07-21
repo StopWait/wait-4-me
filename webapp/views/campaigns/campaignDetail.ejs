@@ -1,68 +1,88 @@
+<div class="container">
 
-<div>
-  <div id="map"></div>
-  <a href="/campaign"> Go back </a>
-  <h1><%= campaign.title %></h1>
-  <h2><%= campaign.price %></h2>
-  <h2> <%= review.isRespond %> </h2>
-  <img src="<%= campaign.photoURL %>" alt="<%= campaign.name %>" />
+<div class="center-btn">
+<a href="/campaign" class="waves-effect waves-light btn">Atrás</a>
+</div>
+
+
+  <div class="row">
+  <div class="col s12 m6">
+    <div class="card-panel teal">
+      <span class="white-text"><%= campaign.title %> a cambio de: <h2><%= campaign.price %></h2>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="center-btn">
   <p>
     <%= campaign.description %>
   </p>
   <% if(campaign.isRequest == true) { %>
     <% if(user._id == campaign.isGoingToWaitId){ %>
       <% if(campaign.isCompleted === true){ %>
-        <p>This campaign has finished. Rate owner and share your opinion</p>
+        <p>La cola se ha terminado por fin. Deja tu valoración</p>
         <% } else { %>
-          <p>You are going to wait this queue</p>
+          <p>Ánimo no desesperes</p>
           <% } %>
             <% } else { %>
-              <p>This campaign have a user for wait:
+              <p>La esta haciendo:
                 <%= campaign.isGoingToWaitName %>
               </p>
               <% } %>
                 <% } else { %>
-                  <p>This campaign don't have a user yet. ¿Do you want to wait this queue?</p>
+
+                  <p>¿Nadie quiere hacerla? Seguro que encuentras una nueva amistad</p>
                   <form action="/campaign/<%= campaign._id %>/request" method="post">
                     <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
-                    <button type="submit">I want to wait</button>
-                    <br><br>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">ME APUNTO</button>
+
                   </form>
                   <% } %>
 
-                    <% if (user._id == campaign.isGoingToWaitId && campaign.isRequest == true && campaign.isCompleted == false){ %>
-                      <form action="/campaign/<%= campaign._id %>/request" method="post">
-                        <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
-                        <button type="submit">I don't want to wait this queue</button>
-                        <br><br>
-                      </form>
-                      <% } %>
-                        <% if(campaign.isCompleted == true && user._id == campaign.isGoingToWaitId) { %>
-                          <% if(review.isRespond) { %>
-                          <a href="/review/<%= campaign._id %>/create" style="color:blue">Send Review</a>
-                        <% } %>
-                          <br><br>
-                          <% } %>
-                            <% if(user._id == campaign.refCreatorId) {%>
-                              <% if(campaign.isCompleted == false) { %>
-                                <form action="/campaign/<%= campaign._id %>/complete" method="post">
-                                  <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
-                                  <button type="submit">Mark as complete</button>
-                                  <br><br>
-                                </form>
-                                <a href="/campaign/<%= campaign._id %>/update" style="color:green">EDIT CAMPAIGN</a>
-                                <br><br>
-                                <a href="/campaign/<%= campaign._id %>/delete" style="color:red">DELETE</a>
-                                <% } else { %>
-                                  <form action="/campaign/<%= campaign._id %>/complete" method="post">
-                                    <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
-                                    <button type="submit">Mark as uncomplete again</button>
-                                    <br><br>
-                                  </form>
-                                  <% } }%>
+                  <% if (user._id == campaign.isGoingToWaitId && campaign.isRequest == true && campaign.isCompleted == false){ %>
+                    <form action="/campaign/<%= campaign._id %>/request" method="post">
+                    <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">PASO DE HACER ESTA COLA</button>
+
+                    </form>
+                    <% } %>
+
+                  <% if(campaign.isCompleted === true && user._id == campaign.isGoingToWaitId) { %>
+                    <a href="/review/<%= campaign._id %>/create" style="color:blue">Send Review</a>
+
+                    <% } %>
+
+                  <% if(user._id == campaign.refCreatorId) {%>
+                    <% if(campaign.isCompleted == false) { %>
+                    <form action="/campaign/<%= campaign._id %>/complete" method="post">
+                    <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
+                    <button class="btn waves-effect waves-light" name="action">MARCAR COMO COMPLETADA</button>
+
+                    </form>
+
+                    <a href="/campaign/<%= campaign._id %>/update" class="btn btn-success"><span class="fa fa-sign-in"></span>EDITAR CAMPAÑA</a>
+
+
+                    <button class="btn waves-effect waves-light" name="action"><a href="/campaign/<%= campaign._id %>/delete" style="color:white">BORRAR</a></button>
+
+                  <% } else { %>
+                    <form action="/campaign/<%= campaign._id %>/complete" method="post">
+                    <input style="display:none" id="checkBox" type="checkbox" name="requestCampaign">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">MARCAR COMO NO REALIZADA</button>
+
+                    </form>
+                    <% } }%>
+  </div>
+
+  <div class="col s8 offset-s2">
+    <div id="map"></div>
+  </div>
+
 </div>
-<script type="text/javascript">
- var myCampaing = <%- JSON.stringify(campaign) %>;
- </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE3wzxrBK16zMljFyGq294DTotwbl85TY&libraries=places"></script>
-<script type="text/javascript" src="/javascript/mapDraw.js"></script>
+
+    <script type="text/javascript">
+     var myCampaing = <%- JSON.stringify(campaign) %>;
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE3wzxrBK16zMljFyGq294DTotwbl85TY&libraries=places"></script>
+    <script type="text/javascript" src="/javascript/mapDraw.js"></script>
