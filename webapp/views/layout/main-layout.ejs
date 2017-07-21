@@ -1,91 +1,83 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>
+      Queue4ME
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/css/materialize.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/js/materialize.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
+  </head>
+  <body>
+  <% if(user) { %>
+      <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="waves-effect waves-light btn" href="../../auth/logout">Salir</a></li>
+          </ul>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="../../user/profile">Mi perfil</a></li>
+          </ul>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="../../campaign">Ver Campañas</a></li>
+          </ul>
 
-<head>
-  <title>
-    Queue4ME
-  </title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/css/materialize.min.css">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/js/materialize.min.js"></script>
-  <script src="/vendor/jquery/jquery.min.js" charset="utf-8"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
-</head>
-
-<body>
-<% if(user) { %>
+          <ul id="nav-mobile" class="side-nav">
+            <li><a href="../../campaign">Campañas</a></li>
+            <li><a href="../../">Inicio</a></li>
+            <li><a href="../../user/profile">Perfil</a></li>
+            <li><a class="waves-effect waves-light btn" href="/auth/logout">Salir</a></li>
+          </ul>
+          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+      </nav>
+  <% } else { %>
     <nav class="white" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect waves-light btn" href="/auth/logout">Salir</a></li>
+          <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/user/profile">Mi perfil</a></li>
+          <li><a href="/auth/login">Log in</a></li>
         </ul>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="./campaign">Ver Campañas</a></li>
-        </ul>
-
         <ul id="nav-mobile" class="side-nav">
-          <li><a href="/campaign">Campañas</a></li>
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/user/profile">Perfil</a></li>
-          <li><a class="waves-effect waves-light btn" href="/auth/logout">Salir</a></li>
+          <li><a href="/auth/login">Log in</a></li>
+          <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
-    </nav>
-<% } else { %>
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
-      </ul>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/auth/login">Log in</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="/auth/login">Log in</a></li>
-        <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav><% } %>
-  <%- body -%>
-</body>
-
-<footer class="page-footer teal">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text">Donde nació la idea</h5>
-        <p class="grey-text text-lighten-4">Viernes tarde, cerveza en mano, IRONBEERS. Juan Macías y Victor Rodriguez atrapados y sin ideas para su segundo proyecto. Pero quizás el alcohol o una musa apareció y mostro el gran problema de esta sociedad: LAS COLAS.</p>
-
-
-      </div>
-
-      <div class="col l3 s12">
-        <h5 class="white-text">Contactanos:</h5>
-        <ul>
-          <img style="width:150px" src="../../images/logo.png" alt="Logo Wait 4 me">
-          <li><a class="white-text" href="https://www.linkedin.com/in/juan-antonio-macias/">Juan Macías</a></li>
-          <li><a class="white-text" href="https://www.linkedin.com/in/victor-rodriguez-padilla/">Victor Rodriguez</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
+    </nav><% } %>
+    <%- body -%>
+  </body>
+  <footer class="page-footer teal">
     <div class="container">
-    Made by <a class="brown-text text-lighten-3" href="/">Mudler & Scully</a>
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Donde nació la idea</h5>
+          <p class="grey-text text-lighten-4">Viernes tarde, cerveza en mano, IRONBEERS. Juan Macías y Victor Rodriguez atrapados y sin ideas para su segundo proyecto. Pero quizás el alcohol o una musa apareció y mostro el gran problema de esta sociedad: LAS COLAS.</p>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contactanos:</h5>
+          <ul>
+            <img style="width:150px" src="../../images/logo.png" alt="Logo Wait 4 me">
+            <li><a class="white-text" href="https://www.linkedin.com/in/juan-antonio-macias/">Juan Macías</a></li>
+            <li><a class="white-text" href="https://www.linkedin.com/in/victor-rodriguez-padilla/">Victor Rodriguez</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="/">Mudler & Scully</a>
+      </div>
+    </div>
+  </footer>
 </html>
-
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="javascript/materialize.js"></script>
