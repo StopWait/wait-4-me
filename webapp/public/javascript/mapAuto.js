@@ -3,6 +3,7 @@ function initMap() {
     center: {lat: -33.8688, lng: 151.2195},
     zoom: 13
   });
+
   var input = /** @type {!HTMLInputElement} */(
       document.getElementById('pac-input'));
 

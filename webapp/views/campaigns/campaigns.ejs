@@ -10,14 +10,15 @@
 </div>
 
 <div class="row">
-  <% campaigns.forEach((campaign) => { %>
+  <% let i = 0
+  campaigns.forEach((campaign) => { %>
   <div class="col s12 m6">
     <div class="card hoverable">
       <div class="card-image">
         <a href="/campaign/<%= campaign._id %>/detail" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
       </div>
       <div class="card-content">
-        <div id="map"></div>
+        <div class="multipleMap" id="map<%= i%>"></div>
         <p>Título & Lugar: <%= campaign.title %> </p>
         <p>Municipio: <%= campaign.city %> </p>
         <p>Descripción: <%= campaign.description %> </p>
@@ -25,12 +26,12 @@
       </div>
     </div>
   </div>
-  <% }) %>
+  <% i++ }) %>
 </div>
 </div>
 
 <script type="text/javascript">
 var myCampaing = <%- JSON.stringify(campaigns) %>;
 </script>
-<script type="text/javascript" src="/javascript/mapDrawAll.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE3wzxrBK16zMljFyGq294DTotwbl85TY&libraries=places"></script>
+<script type="text/javascript" src="/javascript/mapDrawAll.js"></script>

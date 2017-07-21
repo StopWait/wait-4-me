@@ -4,20 +4,29 @@
 <a href="/campaign" class="waves-effect waves-light btn">Atrás</a>
 </div>
 
+<ul class="collection">
+  <li class="collection-item avatar">
+    <img src="<%= user.pic_name %>" alt="" class="circle">
+    <span class="title">¿Donde hay que hacer cola?</span>
+    <p><%= campaign.description %><br>
+    </p>
+  </li>
+</ul>
 
+
+<div class="center-btn">
   <div class="row">
   <div class="col s12 m6">
     <div class="card-panel teal">
-      <span class="white-text"><%= campaign.title %> a cambio de: <h2><%= campaign.price %></h2>
+      <span class="white-text"> SHOW ME THE MONEY!! <h2><%= campaign.price %></h2>
       </span>
     </div>
   </div>
 </div>
+</div>
 
 <div class="center-btn">
-  <p>
-    <%= campaign.description %>
-  </p>
+
   <% if(campaign.isRequest == true) { %>
     <% if(user._id == campaign.isGoingToWaitId){ %>
       <% if(campaign.isCompleted === true){ %>
@@ -31,7 +40,7 @@
               </p>
               <% } %>
                 <% } else { %>
-                  
+
                   <p>¿Nadie quiere hacerla? Seguro que encuentras una nueva amistad</p>
                   <form action="/campaign/<%= campaign._id %>/request" method="post">
                     <input id="checkBox" style="display:none" type="checkbox" checked="checked" name="requestCampaign">
@@ -49,7 +58,15 @@
                     <% } %>
 
                   <% if(campaign.isCompleted === true && user._id == campaign.isGoingToWaitId) { %>
-                    <a href="/review/<%= campaign._id %>/create" style="color:blue">Send Review</a>
+                    <div class="center-btn">
+                      <a href=href="/review/<%= campaign._id %>/create" class="btn btn-success"><span class="fa fa-sign-in"></span>ENVIA TU RESEÑA</a>
+                      <br><br>
+                    </div>
+
+
+
+
+
 
                     <% } %>
 
