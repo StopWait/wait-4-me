@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Review = require('../models/Review');
+const GlobalRoutes = require('../config/globalRoutes');
 
 module.exports = {
   profileGet: (req, res, next) => {
@@ -8,7 +9,7 @@ module.exports = {
       // console.log('IMPRIMO LAS REVIEWS DEL USER => ');
       // console.log(reviews);
       console.log(res.locals);
-      res.render('user/profile', {
+      res.render(GlobalRoutes.Users.Profile, {
         user: res.locals.user,
         reviews: reviews
       });
@@ -20,7 +21,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.render('user/editUser', {
+      res.render(GlobalRoutes.Users.Edit, {
         user: user
       });
     });

@@ -1,9 +1,9 @@
 const Review = require('../models/Review');
 const Campaign = require('../models/Campaign');
-
+const GlobalRoutes = require('../config/globalRoutes');
 module.exports = {
   createGet: (req, res, next) => {
-    res.render('reviews/createReview', {
+    res.render(GlobalRoutes.Reviews.Create, {
       user: res.locals.user,
       idCampaign: req.params
     });
