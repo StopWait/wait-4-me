@@ -11,7 +11,6 @@ const userSchema = new Schema({
   city: String,
   pic_path: String,
   pic_name: String
-
 },
 {
   timestamps: {
@@ -19,6 +18,4 @@ const userSchema = new Schema({
     updatedAt: 'updated_at'
   }
 });
-
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

@@ -1,6 +1,7 @@
 const Review = require('../models/Review');
 const Campaign = require('../models/Campaign');
 const GlobalRoutes = require('../config/globalRoutes');
+
 module.exports = {
   createGet: (req, res, next) => {
     res.render(GlobalRoutes.Reviews.Create, {
@@ -33,8 +34,7 @@ module.exports = {
   },
 
   delete: (req, res, next) => {
-    const id = req.params.id;
-    Review.findByIdAndRemove(id, (err, obj) => {
+    Review.findByIdAndRemove(req.params.id, (err, obj) => {
       if (err) {
         return next(err);
       }
@@ -57,7 +57,6 @@ module.exports = {
   editPost: (req, res, next) => {
     const {title, price, description, photoURL} = req.body;
     const updates = {title, price, description, photoURL};
-    console.log(updates);
     Review.findByIdAndUpdate(req.params.id, updates, (err, result) => {
       if (err) {
         console.log(err);

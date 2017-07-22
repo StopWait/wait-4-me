@@ -4,8 +4,6 @@ const Review = require('../models/Review');
 
 module.exports = {
   index: (req, res, next) => {
-    console.log('Renderizo campañas /campaign a pelo imprimo res.locals.users =>');
-    console.log(res.locals.user);
     Campaign.find({}, (err, campaign) => {
       res.render(GlobalRoutes.Campaigns.Index, {
         campaigns: campaign,
@@ -17,7 +15,6 @@ module.exports = {
   createGet: (req, res, next) => {
     res.render(GlobalRoutes.Campaigns.Create);
   },
-
   createPost: (req, res, next) => {
     const newCampaign = new Campaign({
       title: req.body.title,
@@ -32,8 +29,6 @@ module.exports = {
       refCreatorName: res.locals.user.username,
       photoURL: 'http://lorempixel.com/200/200/'
     });
-    console.log('Crear nueva campaña en la base de datos =>');
-    console.log(newCampaign);
     newCampaign.save((err) => {
       if (err) {
         return err;
@@ -51,10 +46,6 @@ module.exports = {
       Review.find({
         campaignId: req.params.id
       }, (err, review) => {
-        console.log('Imprimir review dentro de Campaign Detail =>');
-        console.log(review);
-        console.log('Imprimir campaña dentro de Campaign Detail =>');
-        console.log(campaign);
         res.render(GlobalRoutes.Campaigns.Detail, {
           title: 'Express Juan',
           campaign: campaign,
@@ -66,10 +57,7 @@ module.exports = {
   },
 
   delete: (req, res, next) => {
-    const id = req.params.id;
-    Campaign.findByIdAndRemove(id, (err, obj) => {
-      console.log('Imprimir campaña dentro antes de eliminarla =>');
-      console.log(obj);
+    Campaign.findByIdAndRemove(req.params.id, (err, obj) => {
       if (err) {
         return next(err);
       }
@@ -90,26 +78,12 @@ module.exports = {
   },
 
   editPost: (req, res, next) => {
-    const {
-      title,
-      price,
-      description,
-      photoURL
-    } = req.body;
-    const updates = {
-      title,
-      price,
-      description,
-      photoURL
-    };
-    console.log('Imprimir update antes de guardarla =>');
-    console.log(updates);
+    const { title, price, description, photoURL } = req.body;
+    const updates = { title, price, description, photoURL };
     Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
       if (err) {
         console.log(err);
       }
-      console.log('Imprimir update después de guardarla =>');
-      console.log(result);
       res.redirect(`/campaign/${result._id}/detail`);
     });
   },
@@ -122,24 +96,16 @@ module.exports = {
         isRequest: true
       };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
-        console.log('Imprimir actualización de estado de campaña (alguien la hace) =>');
-        console.log(result);
         if (err) {
           console.log(err);
         }
       });
     } else if (!req.body.requestCampaign) {
-      const updates = {
-        isGoingToWaitName: '',
-        isGoingToWaitId: '',
-        isRequest: false
-      };
+      const updates = { isGoingToWaitName: '', isGoingToWaitId: '', isRequest: false };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
         if (err) {
           console.log(err);
         }
-        console.log('Imprimir actualización de estado de campaña (dejan de hacer la campaña) =>');
-        console.log(result);
       });
     }
     res.redirect(`/campaign/${req.params.id}/detail`);
@@ -147,9 +113,7 @@ module.exports = {
 
   markAsCompletePost: (req, res, next) => {
     if (req.body.requestCampaign == 'on') {
-      const updates = {
-        isCompleted: true
-      };
+      const updates = { isCompleted: true };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
         if (err) {
           console.log(err);
@@ -158,15 +122,11 @@ module.exports = {
         console.log(result);
       });
     } else if (!req.body.requestCampaign) {
-      const updates = {
-        isCompleted: false
-      };
+      const updates = { isCompleted: false };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
         if (err) {
           console.log(err);
         }
-        console.log('Marcar campaña como incompleta (el creador la desmarca) =>');
-        console.log(result);
       });
     }
     res.redirect(`/campaign/${req.params.id}/detail`);

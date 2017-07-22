@@ -18,5 +18,8 @@ module.exports = {
   Users: {
     Profile: 'user/profile',
     Edit: 'user/editUser',
+  },
+  Error: {
+    error: 'error/error'
   }
 };

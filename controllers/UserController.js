@@ -4,11 +4,9 @@ const GlobalRoutes = require('../config/globalRoutes');
 
 module.exports = {
   profileGet: (req, res, next) => {
-    console.log('desde PROFILE imprimo res.locals =>');
     Review.find({receiverId: res.locals.user._id}, (err, reviews) => {
       // console.log('IMPRIMO LAS REVIEWS DEL USER => ');
       // console.log(reviews);
-      console.log(res.locals);
       res.render(GlobalRoutes.Users.Profile, {
         user: res.locals.user,
         reviews: reviews

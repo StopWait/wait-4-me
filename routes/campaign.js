@@ -15,7 +15,6 @@ router.get('/:id/update', middle.EnsureLoggedIn, CampaignController.editGet);
 router.post('/:id/update', middle.EnsureLoggedIn, CampaignController.editPost);
 
 router.post('/:id/request', middle.EnsureLoggedIn, CampaignController.requestPost);
-
 router.post('/:id/complete', middle.EnsureLoggedIn, CampaignController.markAsCompletePost);
 
 module.exports = router;

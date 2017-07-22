@@ -23,7 +23,6 @@ module.exports = function (){
   passport.use('local-signup', new LocalStrategy(
     { passReqToCallback: true },
     (req, username, password, next) => {
-      console.log('Entro en Local Signup =>');
       process.nextTick(() => {
           User.findOne({
               'username': username
@@ -46,7 +45,6 @@ module.exports = function (){
 
 
   passport.use('local-login', new LocalStrategy((username, password, next) => {
-    console.log('Entro en Local Login, comprobado => ');
     User.findOne({ email:username }, (err, user) => {
       if (err) {
         return next(err);

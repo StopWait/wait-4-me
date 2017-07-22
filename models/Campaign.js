@@ -16,13 +16,10 @@ const campaignSchema = new Schema({
   isRequest: Boolean,
   lat: Number,
   log: Number
-
 }, {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   }
 });
-
-const Campaign = mongoose.model('Campaign', campaignSchema);
-module.exports = Campaign;
+module.exports = mongoose.model('Campaign', campaignSchema);
