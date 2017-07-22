@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const UserController = require('../controllers/UserController');
-const multer  = require('multer');
-const upload = multer({ dest: './public/uploads/' });
+const middle = require('../config/middlewares');
 
-router.get('/profile', UserController.profileGet);
+router.get('/profile', middle.EnsureLoggedIn, UserController.profileGet);
 
-router.get('/:id/edituser', UserController.editGet);
-router.post('/:id/edituser', upload.single('avatar-1'), UserController.editPost);
+router.get('/:id/edituser', middle.EnsureLoggedIn, UserController.editGet);
+router.post('/:id/edituser', [middle.EnsureLoggedIn, middle.UploadFile], UserController.editPost);
 
 module.exports = router;

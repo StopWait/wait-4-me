@@ -1,4 +1,3 @@
-//Global Routes for Render
 module.exports = {
   Auth: {
     Signup: 'auth/signup',
