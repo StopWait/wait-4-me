@@ -33,7 +33,7 @@ module.exports = {
   },
 
   delete: (req, res, next) => {
-    let id = req.params.id;
+    const id = req.params.id;
     Review.findByIdAndRemove(id, (err, obj) => {
       if (err) {
         return next(err);
@@ -55,18 +55,8 @@ module.exports = {
   },
 
   editPost: (req, res, next) => {
-    let {
-      title,
-      price,
-      description,
-      photoURL
-    } = req.body;
-    let updates = {
-      title,
-      price,
-      description,
-      photoURL
-    };
+    const {title, price, description, photoURL} = req.body;
+    const updates = {title, price, description, photoURL};
     console.log(updates);
     Review.findByIdAndUpdate(req.params.id, updates, (err, result) => {
       if (err) {

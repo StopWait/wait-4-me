@@ -6,7 +6,6 @@ const bcryptSalt = 10;
 const ensureLogin = require("connect-ensure-login");
 const User = require("../models/User");
 
-
 authRoutes.get("/signup", (req, res, next) => {
   res.render('signup', {message:'Hi!! Signup & DONT WAIT ANYMORE!!'});
 });

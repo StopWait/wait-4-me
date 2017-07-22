@@ -10,13 +10,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/js/materialize.min.js"></script>
     <script src="/vendor/jquery/jquery.min.js" charset="utf-8"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
+    <link rel="shortcut icon" href="images/favicon.png" />
   </head>
   <body>
   <% if(user) { %>
-    <!-- <div class="navbar-fixed"> -->
       <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-          <a id="logo-container" href="/" class="brand-logo teal-text">WAIT 4 ME</a>
+          <a id="logo-container" href="/" class="brand-logo teal-text"><img style="width:75px; margin-top:7px;" src="../../images/logo.png" alt="Logo Wait 4 me"></a>
           <ul class="right hide-on-med-and-down">
             <li><a class="waves-effect waves-light btn" href="../../auth/logout">Salir</a></li>
           </ul>
@@ -39,7 +39,6 @@
           </ul>
         </div>
       </nav>
-    <!-- </div> -->
   <% } else { %>
       <nav class="white" role="navigation">
         <div class="nav-wrapper container">
@@ -54,7 +53,7 @@
             <li><a href="/auth/login">Log in</a></li>
             <li><a class="waves-effect waves-light btn" href="/auth/signup">Sign Up</a></li>
           </ul>
-          <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
       </nav>
 <% } %>

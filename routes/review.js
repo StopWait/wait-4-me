@@ -6,7 +6,7 @@ router.post('/:id/create', ReviewController.createPost);
 
 router.get('/:id/delete', ReviewController.delete);
 
-router.get('/:id/update', ReviewController.editeGet);
+router.get('/:id/update', ReviewController.editGet);
 router.post('/:id/update', ReviewController.editPost);
 
 

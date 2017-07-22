@@ -23,8 +23,8 @@ module.exports = {
       description: req.body.description,
       price: req.body.price,
       city: req.body.city,
-      lat: req.body.latitude,
-      log: req.body.longitude,
+      lat: req.body.lat,
+      log: req.body.log,
       isCompleted: false,
       isRequest: false,
       refCreatorId: res.locals.user._id,
@@ -87,12 +87,8 @@ module.exports = {
   },
 
   editPost: (req, res, next) => {
-    const updates = {
-      title: req.body.title,
-      price: req.body.price,
-      description: req.body.description,
-      photoURL: req.body.photoURL
-    };
+    const {title, price, description, photoURL} = req.body;
+    const updates = {title, price, description, photoURL};
     console.log('Imprimir update antes de guardarla =>');
     console.log(updates);
     Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
