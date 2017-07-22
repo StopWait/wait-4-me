@@ -3,7 +3,7 @@ const Campaign = require('../models/Campaign');
 
 module.exports = {
   createGet: (req, res, next) => {
-    res.render('createReview', {
+    res.render('reviews/createReview', {
       user: res.locals.user,
       idCampaign: req.params
     });

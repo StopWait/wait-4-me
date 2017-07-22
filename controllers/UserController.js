@@ -2,33 +2,31 @@ const User = require('../models/User');
 const Review = require('../models/Review');
 
 module.exports = {
-
-  userProfileGet: (req, res, next) => {
-
+  profileGet: (req, res, next) => {
     console.log('desde PROFILE imprimo res.locals =>');
     Review.find({receiverId: res.locals.user._id}, (err, reviews) => {
       // console.log('IMPRIMO LAS REVIEWS DEL USER => ');
       // console.log(reviews);
       console.log(res.locals);
-      res.render('profile', {
+      res.render('user/profile', {
         user: res.locals.user,
         reviews: reviews
       });
     });
   },
 
-  userUpdateGet: (req, res, next) => {
+  editGet: (req, res, next) => {
     User.findById(req.params.id, (err, user) => {
       if (err) {
         console.log(err);
       }
-      res.render('editUser', {
+      res.render('user/editUser', {
         user: user
       });
     });
   },
 
-  userUpdatePost: (req, res, next) => {
+  editPost: (req, res, next) => {
     let updates = {
       username: req.body.username,
       email: req.body.email,

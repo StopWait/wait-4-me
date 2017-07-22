@@ -1,40 +1,16 @@
 const express = require("express");
-const authRoutes = express.Router();
-const passport = require("passport");
-const bcrypt = require("bcrypt");
-const bcryptSalt = 10;
-const ensureLogin = require("connect-ensure-login");
-const User = require("../models/User");
+const router = express.Router();
+const AuthController = require('../controllers/AuthController');
 
-authRoutes.get("/signup", (req, res, next) => {
-  res.render('signup', {message:'Hi!! Signup & DONT WAIT ANYMORE!!'});
-});
+router.get("/signup", AuthController.signupGet);
+router.post('/signup', AuthController.signupPost);
 
-authRoutes.post('/signup', passport.authenticate('local-signup', {
-  successRedirect : '/campaign',
-  failureRedirect : '/auth/signup'
-}));
+router.get('/login', AuthController.loginGet);
+router.post('/login', AuthController.loginPost);
 
+router.get('/logout', AuthController.logout);
 
-authRoutes.get('/login', (req, res) => {
-    res.render('login');
-});
+router.get("/auth/facebook", AuthController.facebookGet);
+router.get("/auth/facebook/callback", AuthController.facebookCallbackGet);
 
-
-authRoutes.post('/login', passport.authenticate('local-login', {
-  successRedirect : '/campaign',
-  failureRedirect : '/auth/login'
-}));
-
-authRoutes.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/../');
-});
-
-authRoutes.get("/auth/facebook", passport.authenticate("facebook"));
-authRoutes.get("/auth/facebook/callback", passport.authenticate("facebook", {
-  successRedirect: "/campaign",
-  failureRedirect: "/"
-}));
-
-module.exports = authRoutes;
+module.exports = router;

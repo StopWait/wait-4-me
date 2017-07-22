@@ -36,10 +36,6 @@ module.exports = function(app){
 
   app.use((req, res, next) => {
     res.locals.user = req.user;
-    // console.log('MIDDLEWARE REQ.USER => ');
-    // console.log(req.user);
-    // console.log('MIDDLEWARE RES.LOCALS => ');
-    // console.log(res.locals.user);
     next();
   });
 

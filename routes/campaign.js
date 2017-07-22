@@ -17,5 +17,4 @@ router.post('/:id/request', CampaignController.requestPost);
 
 router.post('/:id/complete', CampaignController.markAsCompletePost);
 
-
 module.exports = router;

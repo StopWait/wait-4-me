@@ -23,21 +23,17 @@ module.exports = function (){
   passport.use('local-signup', new LocalStrategy(
     { passReqToCallback: true },
     (req, username, password, next) => {
+      console.log('Entro en Local Signup =>');
       process.nextTick(() => {
           User.findOne({
               'username': username
           }, (err, user) => {
               if (err){ return next(err); }
-
               if (user) { return next(null, false); }
               else {
                   const { username, email, password } = req.body;
                   const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-                  const newUser = new User({
-                    username,
-                    email,
-                    password: hashPass
-                  });
+                  const newUser = new User({username, email, password: hashPass});
 
                   newUser.save((err) => {
                       if (err){ next(err); }
@@ -50,6 +46,7 @@ module.exports = function (){
 
 
   passport.use('local-login', new LocalStrategy((username, password, next) => {
+    console.log('Entro en Local Login, comprobado => ');
     User.findOne({ email:username }, (err, user) => {
       if (err) {
         return next(err);

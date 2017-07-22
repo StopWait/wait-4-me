@@ -10,6 +10,6 @@ module.exports = function(app){
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     // app.locals.title = 'Express - Generated with IronGenerator'
     res.status(err.status || 500);
-    res.render('error');
+    res.render('error/error');
   });
 };
