@@ -1,4 +1,5 @@
 const Campaign = require('../models/Campaign');
+const GlobalRoutes = require('../config/globalRoutes');
 const Review = require('../models/Review');
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
     console.log('Renderizo campañas /campaign a pelo imprimo res.locals.users =>');
     console.log(res.locals.user);
     Campaign.find({}, (err, campaign) => {
-      res.render('campaigns/campaigns', {
+      res.render(GlobalRoutes.Campaigns.Index, {
         campaigns: campaign,
         user: res.locals.user
       });
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   createGet: (req, res, next) => {
-    res.render('campaigns/campaignCreate');
+    res.render(GlobalRoutes.Campaigns.Create);
   },
 
   createPost: (req, res, next) => {
@@ -47,17 +48,19 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      Review.find({campaignId: req.params.id}, (err, review) => {
+      Review.find({
+        campaignId: req.params.id
+      }, (err, review) => {
         console.log('Imprimir review dentro de Campaign Detail =>');
         console.log(review);
         console.log('Imprimir campaña dentro de Campaign Detail =>');
         console.log(campaign);
-          res.render('campaigns/campaignDetail', {
-            title: 'Express Juan',
-            campaign: campaign,
-            user: res.locals.user,
-            review: review
-          });
+        res.render(GlobalRoutes.Campaigns.Detail, {
+          title: 'Express Juan',
+          campaign: campaign,
+          user: res.locals.user,
+          review: review
+        });
       });
     });
   },
@@ -79,7 +82,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.render('campaigns/campaignUpdate', {
+      res.render(GlobalRoutes.Campaigns.Update, {
         title: 'La campaña de Juanito',
         campaign: campaign
       });
@@ -87,8 +90,18 @@ module.exports = {
   },
 
   editPost: (req, res, next) => {
-    const {title, price, description, photoURL} = req.body;
-    const updates = {title, price, description, photoURL};
+    const {
+      title,
+      price,
+      description,
+      photoURL
+    } = req.body;
+    const updates = {
+      title,
+      price,
+      description,
+      photoURL
+    };
     console.log('Imprimir update antes de guardarla =>');
     console.log(updates);
     Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
@@ -115,7 +128,7 @@ module.exports = {
           console.log(err);
         }
       });
-    } else if (!req.body.requestCampaign){
+    } else if (!req.body.requestCampaign) {
       const updates = {
         isGoingToWaitName: '',
         isGoingToWaitId: '',
@@ -134,7 +147,9 @@ module.exports = {
 
   markAsCompletePost: (req, res, next) => {
     if (req.body.requestCampaign == 'on') {
-      const updates = { isCompleted: true };
+      const updates = {
+        isCompleted: true
+      };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
         if (err) {
           console.log(err);
@@ -142,8 +157,10 @@ module.exports = {
         console.log('Marcar campaña como completa (el creador la marca) =>');
         console.log(result);
       });
-    } else if (!req.body.requestCampaign){
-      const updates = { isCompleted: false };
+    } else if (!req.body.requestCampaign) {
+      const updates = {
+        isCompleted: false
+      };
       Campaign.findByIdAndUpdate(req.params.id, updates, (err, result) => {
         if (err) {
           console.log(err);
