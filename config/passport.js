@@ -67,7 +67,7 @@ module.exports = function (){
     User.findOne({ username: profile._json.name }, (err, user) => {
     if (err) { return done(err); }
     if (user === null){
-      var newUser = new User({
+      const newUser = new User({
         username: profile._json.name,
         facebookID: profile._json.id
       });

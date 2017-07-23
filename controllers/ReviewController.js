@@ -40,28 +40,5 @@ module.exports = {
       }
       res.redirect("/campaign");
     });
-  },
-
-  editGet: (req, res, next) => {
-    Review.findById(req.params.id, (err, campaign) => {
-      if (err) {
-        console.log(err);
-      }
-      res.render('campaignUpdate', {
-        title: 'La campaña de Juanito',
-        campaign: campaign
-      });
-    });
-  },
-
-  editPost: (req, res, next) => {
-    const {title, price, description, photoURL} = req.body;
-    const updates = {title, price, description, photoURL};
-    Review.findByIdAndUpdate(req.params.id, updates, (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      res.redirect(`/campaign/${result._id}/detail`);
-    });
   }
 };

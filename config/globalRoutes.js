@@ -4,16 +4,16 @@ module.exports = {
     Login: 'auth/login'
   },
   Campaigns: {
-    Index: 'campaigns/campaigns',
-    Create: 'campaigns/campaignCreate',
-    Detail: 'campaigns/campaignDetail',
-    Update: 'campaigns/campaignUpdate'
+    Index: 'campaigns/index',
+    Create: 'campaigns/create',
+    Detail: 'campaigns/detail',
+    Update: 'campaigns/update'
   },
   Index: {
     Index: 'index/index'
   },
   Reviews: {
-    Create: 'reviews/createReview'
+    Create: 'reviews/create'
   },
   Users: {
     Profile: 'user/profile',
