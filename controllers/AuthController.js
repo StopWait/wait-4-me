@@ -1,15 +1,14 @@
 const User = require("../models/User");
 const passport = require("passport");
-const GlobalRoutes = require('../config/globalRoutes');
 
 module.exports = {
-  signupGet: (req, res, next) => { res.render(GlobalRoutes.Auth.Signup); },
+  signupGet: (req, res, next) => { res.render('auth/signup'); },
   signupPost: passport.authenticate('local-signup', {
       successRedirect: '/campaign',
       failureRedirect: '/auth/signup'
   }),
 
-  loginGet: (req, res, next) => { res.render(GlobalRoutes.Auth.Login); },
+  loginGet: (req, res, next) => { res.render('auth/login'); },
   loginPost: passport.authenticate('local-login', {
     successRedirect : '/campaign',
     failureRedirect : '/auth/login'

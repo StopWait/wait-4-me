@@ -1,13 +1,12 @@
 const User = require('../models/User');
 const Review = require('../models/Review');
-const GlobalRoutes = require('../config/globalRoutes');
 
 module.exports = {
   profileGet: (req, res, next) => {
     Review.find({receiverId: res.locals.user._id}, (err, reviews) => {
       // console.log('IMPRIMO LAS REVIEWS DEL USER => ');
       // console.log(reviews);
-      res.render(GlobalRoutes.Users.Profile, {
+      res.render('user/profile', {
         user: res.locals.user,
         reviews: reviews
       });
@@ -19,7 +18,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.render(GlobalRoutes.Users.Edit, {
+      res.render('user/editUser', {
         user: user
       });
     });
@@ -36,7 +35,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.redirect('../../user/profile');
+      res.redirect('/user/profile');
     });
   }
 };

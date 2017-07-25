@@ -1,11 +1,10 @@
 const Campaign = require('../models/Campaign');
-const GlobalRoutes = require('../config/globalRoutes');
 const Review = require('../models/Review');
 
 module.exports = {
   index: (req, res, next) => {
     Campaign.find({}, (err, campaign) => {
-      res.render(GlobalRoutes.Campaigns.Index, {
+      res.render('campaigns/index', {
         campaigns: campaign,
         user: res.locals.user
       });
@@ -13,7 +12,7 @@ module.exports = {
   },
 
   createGet: (req, res, next) => {
-    res.render(GlobalRoutes.Campaigns.Create);
+    res.render('campaigns/create');
   },
   createPost: (req, res, next) => {
     const newCampaign = new Campaign({
@@ -46,7 +45,7 @@ module.exports = {
       Review.find({
         campaignId: req.params.id
       }, (err, review) => {
-        res.render(GlobalRoutes.Campaigns.Detail, {
+        res.render('campaigns/detail', {
           title: 'Express Juan',
           campaign: campaign,
           user: res.locals.user,
@@ -70,7 +69,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }
-      res.render(GlobalRoutes.Campaigns.Update, {
+      res.render('campaigns/update', {
         title: 'La campaña de Juanito',
         campaign: campaign
       });
