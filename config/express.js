@@ -11,7 +11,14 @@ const config = require('./config');
 const expressLayouts = require("express-ejs-layouts");
 
 module.exports = function(app){
-  mongoose.connect(config.db);
+  mongoose.Promise = Promise;
+  mongoose.connect(config.db)
+    .then(res => {
+      const db = res.connections[0];
+      console.log(`Connected to: ${db.name} in http://${db.host}:${db.port}`)
+    }).catch(err => {
+      throw err
+    })
   app.set('views', config.rootPath+'views');
   app.set("view engine", "ejs");
   app.set('layout', 'layout/main-layout');
@@ -29,11 +36,10 @@ module.exports = function(app){
     saveUninitialized: true,
     store: new MongoStore( { mongooseConnection: mongoose.connection })
   }));
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use((req, res, next) => {
     res.locals.user = req.user;
     next();
   });
-  app.use(passport.initialize());
-  app.use(passport.session());
-
 };

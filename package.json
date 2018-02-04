@@ -3,27 +3,27 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "dev": "DEBUG=server:* nodemon ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^1.0.3",
     "body-parser": "~1.16.0",
     "bootstrap": "^3.3.7",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^1.3.2",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.6.0",
+    "debug": "^2.6.9",
     "dotenv": "^4.0.0",
-    "ejs": "^2.5.6",
+    "ejs": "^2.5.7",
     "express": "~4.14.1",
-    "express-ejs-layouts": "^2.2.0",
-    "express-session": "^1.15.3",
+    "express-ejs-layouts": "^2.3.1",
+    "express-session": "^1.15.6",
     "express-sessions": "^1.0.6",
     "jade": "~1.11.0",
-    "jquery": "^3.2.1",
-    "mongoose": "^4.11.3",
+    "jquery": "^3.3.1",
+    "mongoose": "^5.0.3",
     "morgan": "~1.7.0",
     "multer": "^1.3.0",
     "passport": "^0.3.2",
@@ -32,6 +32,6 @@
     "req-flash": "0.0.3"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.14.12"
   }
 }

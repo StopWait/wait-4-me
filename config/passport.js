@@ -24,21 +24,23 @@ module.exports = function (){
     { passReqToCallback: true },
     (req, username, password, next) => {
       process.nextTick(() => {
-          User.findOne({
-              'username': username
-          }, (err, user) => {
-              if (err){ return next(err); }
-              if (user) { return next(null, false); }
-              else {
-                  const { username, email, password } = req.body;
-                  const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-                  const newUser = new User({username, email, password: hashPass});
-
-                  newUser.save((err) => {
-                      if (err){ next(err); }
-                      return next(null, newUser);
-                  });
+          User.findOne({username})
+          .then(response => {
+              if (response) {
+                console.log('Usuario existe')
+                return next(null, false);
               }
+              let { username, email, password } = req.body;
+              password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+              const newUser = new User({username, email, password});
+
+              newUser.save((err) => {
+                  if (err){ next(err); }
+                  return next(null, newUser);
+              });
+          })
+          .catch(err => {
+            throw err
           });
       });
   }));
